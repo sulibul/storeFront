@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button";
 import Search from "./Search";
 import "./FirstPart.scss";
+import { Link } from "react-router-dom";
 
 const FirstPart = () => {
   return (
@@ -9,10 +10,10 @@ const FirstPart = () => {
       <div className="first-part-nav">
         <div className="left-buttons">
           <Button onClick={() => {}} color="blue">
-            <a>Shops</a>
+            <Link to="">Shops</Link>
           </Button>
           <Button onClick={() => {}} color="blue">
-            <a>Products</a>
+            <Link to="/products">Products</Link>
           </Button>
           <Button onClick={() => {}} color="blue">
             <a>Contact</a>
