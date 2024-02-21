@@ -1,0 +1,26 @@
+.first-part-nav {
+  height: 60px;
+  margin: 0;
+  //   padding: 30px;
+  background-color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid;
+  .btn {
+    background-color: wheat;
+    border: none;
+  }
+  #site-search {
+    width: 40%;
+    height: 85%;
+  }
+  .left-buttons {
+    position: absolute;
+    right: 85%;
+  }
+  .right-buttons {
+    position: absolute;
+    left: 85%;
+  }
+}

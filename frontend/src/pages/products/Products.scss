@@ -1,0 +1,21 @@
+.grid-container {
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sidebar-container {
+  flex: 0.8;
+}
+.product-container {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+}
+.product {
+  height: 300px;
+  border-radius: 25px;
+  margin: 10px;
+  border: black solid;
+  border-radius: 25px;
+}
