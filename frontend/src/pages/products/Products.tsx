@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AJAX } from "../../hooks/getJson";
 import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../../config";
-
+import FilterSideBar from "../../components/FilterSideBar";
 // interface Props {
 //   name?: string;
 //   company?: string;
@@ -15,17 +15,27 @@ import { API_URL } from "../../config";
 const Products = () => {
   const params = useParams();
 
+  let filteredData: string[] = [];
   const [data, setData] = useState<any[]>([]);
+  const [checkedValue, setValue] = useState<string[]>([]);
 
   const fetchData = async () => {
     const result = await AJAX(
-      `${API_URL}/products?name__icontains=${
-        params.name ? params.name : ""
-      }&company=${params.company ? params.company : ""}&category=${
-        params.category ? params.category : ""
-      }&price_min=${params.price_min ? params.price_min : ""}&price_max=${
-        params.price_max ? params.price_max : ""
-      }`
+      `${API_URL}/products?name__icontains=${params.name ? params.name : ""}${
+        params.company ? `&company=${params.company}` : ""
+      }${params.category ? `&category=${params.category}` : ""}&price_min=${
+        params.price_min ? params.price_min : ""
+      }&price_max=${params.price_max ? params.price_max : ""}`
+    );
+    setData(result);
+  };
+  const fetchData2 = async () => {
+    const result = await AJAX(
+      `${API_URL}/products?name__icontains=${params.name ? params.name : ""}${
+        params.company ? `&company=${params.company}` : ""
+      }${params.category ? `&category=${params.category}` : ""}&price_min=${
+        params.price_min ? params.price_min : ""
+      }&price_max=${params.price_max ? params.price_max : ""}`
     );
     setData(result);
   };
@@ -34,52 +44,66 @@ const Products = () => {
     fetchData();
   }, []);
 
-  console.log(data);
+  useEffect(() => {});
+
+  let companies = data
+    .map((product) => {
+      console.log(product);
+      return product.company;
+    })
+    .filter((value, index, array) => array.indexOf(value) === index);
+  const handleCallBack = (filters: string[]) => {
+    console.log(filters);
+  };
+
   return (
     <>
       <div className="grid-container">
         <div className="sidebar-container">
-          <div>
-            {data
-              ? data.map((product) => (
-                  <div>
-                    <Link to={`/products//${product.company}}`}>
-                      {product.company}
-                    </Link>
-                  </div>
-                ))
-              : ""}
-          </div>
-          <div>
-            {data
-              ? data.map((product) => (
-                  <div>
-                    <></>
-                    <Link to={`/products/${product.category}`}>
-                      {product.category}
-                    </Link>
-                  </div>
-                ))
-              : ""}
-          </div>
+          <FilterSideBar
+            handleCallBack={handleCallBack}
+            filters={companies}
+            setValue={setValue}
+            checkedValue={checkedValue}
+          ></FilterSideBar>
         </div>
         <div className="product-container">
           {data ? (
-            data.map((product) => (
-              <div
-                className="product"
-                style={{
-                  backgroundImage: `url(${product.product_img})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <h1>{product.name}</h1>
-                <p>{product.description}</p>
-                <Link to={`/product/${product.id}`}>link to product</Link>
-              </div>
-            ))
+            checkedValue.length == 0 ? (
+              data.map((product) => (
+                <div
+                  className="product"
+                  style={{
+                    backgroundImage: `url(${product.product_img})`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <h1>{product.name}</h1>
+                  <p>{product.description}</p>
+                  <Link to={`/product/${product.id}`}>link to product</Link>
+                </div>
+              ))
+            ) : (
+              data
+                .filter((product) => checkedValue.includes(product.company))
+                .map((product) => (
+                  <div
+                    className="product"
+                    style={{
+                      backgroundImage: `url(${product.product_img})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <h1>{product.name}</h1>
+                    <p>{product.description}</p>
+                    <Link to={`/product/${product.id}`}>link to product</Link>
+                  </div>
+                ))
+            )
           ) : (
             <p>no products</p>
           )}
