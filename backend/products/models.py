@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import CustomUser
 
 Choices = [(i, i) for i in range(11)]
 
@@ -33,7 +33,7 @@ class Product(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+        CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, null=True, blank=True)
     text = models.TextField(max_length=200, null=True)

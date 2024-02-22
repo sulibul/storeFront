@@ -5,7 +5,7 @@ import "./App.scss";
 import Products from "./pages/products/Products.tsx";
 import ProductDetail from "./pages/products/ProductDetail.tsx";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import HomePage from "./pages/products/HomePage.tsx";
+import HomePage from "./pages/HomePage.tsx";
 import Layout from "./pages/products/Layout.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 

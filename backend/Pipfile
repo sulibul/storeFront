@@ -11,6 +11,9 @@ django-environ = "*"
 environ = "*"
 django-rest = "*"
 django-filter = "*"
+django-allauth = "*"
+django-rest-auth = "*"
+dj-rest-auth = "*"
 
 [dev-packages]
 

@@ -41,22 +41,35 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'rest_auth.registration',
     # APPS
+    'users',
     'ads',
     'products',
     'search',
     'corsheaders',
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     # 'DEFAULT_PERMISSION_CLASSES': [
+#     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     # ]
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.AllowAny',
+#     ]
+# }
+
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    # ]
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 MIDDLEWARE = [
@@ -149,3 +162,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cross-Origin Resource Sharing
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTH_USER_MODEL = "users.CustomUser"
