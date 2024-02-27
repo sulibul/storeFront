@@ -3,31 +3,34 @@ from django.contrib.auth.base_user import BaseUserManager
 
 
 class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, password, is_staff, is_admin, **extra_fields):
+    def _create_user(self, email, password, is_superuser, is_staff, **extra_fields):
         if not email:
             raise ValueError('Users must have an email address')
         email = self.normalize_email(email)
         user = self.model(
             email=email,
-            is_staff=is_staff,
+            password=password,
             is_active=True,
-            is_admin=is_admin,
+            is_superuser=is_superuser,
+            is_staff=is_staff,
             **extra_fields
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, login, email, password, **extra_fields):
+    def create_user(self, email, password, **extra_fields):
         user = self._create_user(
-            login, email, password, False, False, **extra_fields)
+            email, password, False, False, **extra_fields)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, login, email, password, **extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         user = self._create_user(
-            login, email, password, True, True, **extra_fields)
+            email, password, True, True, **extra_fields)
+        user.save(using=self._db)
+
         return user
 
 

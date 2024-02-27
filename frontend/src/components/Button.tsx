@@ -11,6 +11,7 @@ const Button = ({ onMouseEnter, onClick, color = "blue", children }: Props) => {
   return (
     <>
       <button
+        type="button"
         className={"btn btn-" + color}
         onClick={onClick}
         onMouseEnter={onMouseEnter}

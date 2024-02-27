@@ -7,7 +7,7 @@ const Search = () => {
         type="search"
         id="site-search"
         name="q"
-        placeholder="what are you looking for"
+        placeholder="what are you looking for "
       />
     </>
   );

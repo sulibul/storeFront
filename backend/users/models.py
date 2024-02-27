@@ -2,11 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
 from django.core.validators import RegexValidator
+from django import forms
 
 
 class CustomUser(AbstractUser):
+    username = None
     email = models.EmailField(verbose_name='Email',
                               max_length=256, unique=True)
+    password = models.CharField(max_length=100)
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     date_of_birth = models.DateField()
@@ -21,13 +24,14 @@ class CustomUser(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_super_user = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'name', 'password', 'surname',
+    REQUIRED_FIELDS = ('password', 'name', 'surname',
                        'date_of_birth', 'city', 'post_code', 'street')
 
     objects = CustomUserManager()
 
     def __str__(self):
-        return '{self.name} {self.surname}'
+        return self.name + " " + self.surname

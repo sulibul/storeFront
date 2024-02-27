@@ -1,6 +1,6 @@
 import "./Products.scss";
 import { useEffect, useState } from "react";
-import { AJAX } from "../../hooks/getJson";
+import { AJAX } from "../../utils/getJson";
 import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../../config";
 import FilterSideBar from "../../components/FilterSideBar";

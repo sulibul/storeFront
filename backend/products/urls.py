@@ -9,7 +9,9 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('products', views.ProductListAPIView.as_view()),
     path('products/<int:pk>',
-         views.ProductAPIView.as_view({'get': 'retrieve'}))
+         views.ProductAPIView.as_view({'get': 'retrieve'})),
+    path('comments/<int:product_id>',
+         views.getComments, name='comments')
 ]
 
 # urlpatterns += router.urls

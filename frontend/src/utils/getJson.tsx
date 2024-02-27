@@ -1,6 +1,13 @@
 import { TIMEOUT_SEC } from "../config";
 import axios from "axios";
 
+type body = {
+  [key: string]: any;
+  // Define specific keys with their types if needed
+  // key1: type1;
+  // key2: type2;
+};
+
 const timeout = function (s: number) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -10,12 +17,18 @@ const timeout = function (s: number) {
 };
 
 //API CALL
-export const AJAX = async function (url: string, uploadData: boolean = false) {
+export const AJAX = async function (
+  url: string,
+  uploadData: boolean = false,
+  body: body = {}
+) {
   try {
     const fetchPro = uploadData
-      ? axios.post(url, {
+      ? axios.post(url, JSON.stringify(body), {
           method: "POST",
-          headers: {},
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
       : axios.get(url);
 
@@ -24,6 +37,6 @@ export const AJAX = async function (url: string, uploadData: boolean = false) {
     const data = await res.data;
     return data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "./Button";
-import { AJAX } from "../hooks/getJson";
+import { AJAX } from "../utils/getJson";
 import { API_URL } from "../config";
 import "./Carousel.scss";
 
