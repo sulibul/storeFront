@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinLengthValidator
 from django import forms
 
 
@@ -9,7 +9,9 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(verbose_name='Email',
                               max_length=256, unique=True)
-    password = models.CharField(max_length=100)
+    password = models.CharField(max_length=100, validators=[
+        MinLengthValidator(8, 'the field must contain at least 8 characters')
+    ])
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     date_of_birth = models.DateField()

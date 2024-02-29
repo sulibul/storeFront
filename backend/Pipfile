@@ -16,6 +16,8 @@ django-rest-auth = "*"
 dj-rest-auth = "*"
 djangorestframework-simplejwt = "*"
 django-cors-headers = "*"
+drf-haystack = "*"
+elasticsearch = "*"
 
 [dev-packages]
 

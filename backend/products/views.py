@@ -8,17 +8,8 @@ from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-# from products.forms import ProductForm
-
-# Create your views here.
-
-# def indexProduct(request):
-#     product_filter = ProductFilter(request.GET, queryset=Product.objects.all())
-
-#     context = {
-#         'form': product_filter.form,
-#         'products': product_filter.qs
-#     }
+from django.contrib.postgres.search import SearchVector
+from django.db.models import Q
 
 
 class ProductListAPIView(ListAPIView):
@@ -46,3 +37,16 @@ def getComments(request, product_id=None):
         comments = None
     serializer = CommentSerializer(comments)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def searchForProducts(request):
+    query = request.GET.get('query')
+    multple_q = Q(Q(name__icontains=query) | Q(description__icontains=query) | Q(
+        company__name__icontains=query) | Q(category__name__icontains=query))
+
+    products = Product.objects.filter(multple_q)
+    serializer = ProductSerializer(products, many=True)
+
+    data = serializer.data
+    return Response(data)

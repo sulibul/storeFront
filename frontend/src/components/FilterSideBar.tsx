@@ -25,8 +25,6 @@ const FilterSideBar = ({ filters, checkedValue, setValue }: Props) => {
     }
   }
 
-  console.log(checkedValue);
-
   return (
     <>
       <form>

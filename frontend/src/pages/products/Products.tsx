@@ -21,21 +21,15 @@ const Products = () => {
 
   const fetchData = async () => {
     const result = await AJAX(
-      `${API_URL}/products?name__icontains=${params.name ? params.name : ""}${
-        params.company ? `&company=${params.company}` : ""
-      }${params.category ? `&category=${params.category}` : ""}&price_min=${
-        params.price_min ? params.price_min : ""
-      }&price_max=${params.price_max ? params.price_max : ""}`
-    );
-    setData(result);
-  };
-  const fetchData2 = async () => {
-    const result = await AJAX(
-      `${API_URL}/products?name__icontains=${params.name ? params.name : ""}${
-        params.company ? `&company=${params.company}` : ""
-      }${params.category ? `&category=${params.category}` : ""}&price_min=${
-        params.price_min ? params.price_min : ""
-      }&price_max=${params.price_max ? params.price_max : ""}`
+      !params.hasOwnProperty("query")
+        ? `${API_URL}/products?name__icontains=${
+            params.name ? params.name : ""
+          }${params.company ? `&company=${params.company}` : ""}${
+            params.category ? `&category=${params.category}` : ""
+          }&price_min=${params.price_min ? params.price_min : ""}&price_max=${
+            params.price_max ? params.price_max : ""
+          }`
+        : `${API_URL}/products/search?query=${params.query}`
     );
     setData(result);
   };

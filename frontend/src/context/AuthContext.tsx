@@ -50,8 +50,10 @@ export const AuthProvider = ({ children }) => {
 
       //Save a refresh and access token
       setAuthToken(data);
+      console.log(data);
       //Set user data
       setUser(jwtDecode(data.access));
+      console.log(jwtDecode(data.access));
       //Save it to localstorage
       localStorage.setItem("authTokens", JSON.stringify(data));
 

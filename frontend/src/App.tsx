@@ -13,6 +13,7 @@ import NotFoundPage from "./pages/NotFoundPage.tsx";
 import Login from "./pages/user/Login.tsx";
 import PrivateRoute from "./utils/PrivateRoute.tsx";
 import UserInfo from "./pages/user/UserInfo.tsx";
+import Register from "./pages/user/Register.tsx";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
               element={<Products />}
               exact
             />
-
+            <Route path="search/:query" element={<Products />} exact />
             <Route
               exact
               path="product/:productId"
@@ -35,6 +36,8 @@ function App() {
             />
 
             <Route path="user/login/" element={<Login />} />
+
+            <Route path="user/register" element={<Register />} />
 
             <Route
               path="user/info"

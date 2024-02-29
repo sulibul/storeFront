@@ -18,7 +18,6 @@ const Carousel = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data);
   return (
     <>
       <div className="carousel">

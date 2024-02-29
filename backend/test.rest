@@ -15,7 +15,7 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/api/users/sign_up/
 Content-Type: application/json
 
-{"email": "andrej@andrej.pl", "password":"paster356", "name":"andrer", "surname":"andrej", "date_of_birth":"2000-02-02","city":"warsaw", "post_code":"80-000","street":"andrej"}
+{"email": "andrej@andrej333.pl", "password":"paster356", "name":"andrer", "surname":"andrej", "date_of_birth":"2000-02-02","city":"warsaw", "post_code":"80-000","street":"andrej"}
 
 ###
 
@@ -23,3 +23,12 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/api/comments/1
 
 Content-Type: application/json
+
+
+###
+GET http://127.0.0.1:8000/api/products?name__icontains=a&price_min=&price_max=
+
+Content-Type: application/json
+
+###
+GET http://127.0.0.1:8000/api/products/search?query=logitech
