@@ -25,7 +25,7 @@ class ProductAPIView(viewsets.ViewSet):
         queryset = Product.objects.all()
         product = get_object_or_404(queryset, pk=pk)
         serializer = ProductSerializer(product)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -36,7 +36,7 @@ def getComments(request, product_id=None):
     except:
         comments = None
     serializer = CommentSerializer(comments)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -49,4 +49,4 @@ def searchForProducts(request):
     serializer = ProductSerializer(products, many=True)
 
     data = serializer.data
-    return Response(data)
+    return Response(data, status=status.HTTP_200_OK)

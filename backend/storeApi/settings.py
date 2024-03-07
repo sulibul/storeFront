@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'products',
     'search',
     'corsheaders',
+    'cart'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -111,7 +112,11 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
+
 MIDDLEWARE = [
+    # CORS
+    'corsheaders.middleware.CorsMiddleware',
+    # Default
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,7 +124,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'storeApi.urls'
@@ -200,6 +204,17 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cross-Origin Resource Sharing
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
 
+
+CORS_ORIGIN_ALLOW_ALL = True  # <-------- this
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",    # React (FrontEnd Url) # <-------- this
+]
+CORS_ALLOW_HEADERS = '*'  # <-------- this
+# (Api Base Url) <-------- this
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
 AUTH_USER_MODEL = "users.CustomUser"
+
+
+CART_SESSION_ID = 'cart'

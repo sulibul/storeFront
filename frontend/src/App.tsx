@@ -5,7 +5,7 @@ import "./App.scss";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 
-import ProductDetail from "./pages/products/ProductDetail.tsx";
+import ProductDetail from "./pages/products/ProductDetail/ProductDetail.tsx";
 import Products from "./pages/products/Products.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import Layout from "./pages/products/Layout.tsx";

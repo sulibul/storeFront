@@ -28,6 +28,7 @@ export const AJAX = async function (
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
         })
       : axios.get(url);

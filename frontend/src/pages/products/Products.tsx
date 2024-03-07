@@ -15,6 +15,8 @@ import FilterSideBar from "../../components/FilterSideBar";
 const Products = () => {
   const params = useParams();
 
+  const productQuery = document.querySelector("#products");
+
   let filteredData: string[] = [];
   const [data, setData] = useState<any[]>([]);
   const [checkedValue, setValue] = useState<string[]>([]);
@@ -22,9 +24,8 @@ const Products = () => {
   const fetchData = async () => {
     const result = await AJAX(
       !params.hasOwnProperty("query")
-        ? `${API_URL}/products?name__icontains=${
-            params.name ? params.name : ""
-          }${params.company ? `&company=${params.company}` : ""}${
+        ? `${API_URL}/products?name__icontains=${params.name ? params.name : ""}
+          ${params.company ? `&company=${params.company}` : ""}${
             params.category ? `&category=${params.category}` : ""
           }&price_min=${params.price_min ? params.price_min : ""}&price_max=${
             params.price_max ? params.price_max : ""
@@ -38,17 +39,13 @@ const Products = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {});
-
   let companies = data
     .map((product) => {
-      console.log(product);
       return product.company;
     })
     .filter((value, index, array) => array.indexOf(value) === index);
-  const handleCallBack = (filters: string[]) => {
-    console.log(filters);
-  };
+
+  const handleCallBack = (filters: string[]) => {};
 
   return (
     <>
@@ -63,22 +60,23 @@ const Products = () => {
         </div>
         <div className="product-container">
           {data ? (
+            // check if any filters are active
             checkedValue.length == 0 ? (
-              data.map((product) => (
-                <div
-                  className="product"
-                  style={{
-                    backgroundImage: `url(${product.product_img})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <h1>{product.name}</h1>
-                  <p>{product.description}</p>
-                  <Link to={`/product/${product.id}`}>link to product</Link>
-                </div>
-              ))
+              data.map((product) => {
+                return (
+                  <div
+                    className="product"
+                    id={`product${product.id}`}
+                    style={{
+                      backgroundImage: `url(${product.product_img})`,
+                    }}
+                  >
+                    <h1>{product.name}</h1>
+                    <p>{product.description}</p>
+                    <Link to={`/product/${product.id}`}>link to product</Link>
+                  </div>
+                );
+              })
             ) : (
               data
                 .filter((product) => checkedValue.includes(product.company))
@@ -87,9 +85,6 @@ const Products = () => {
                     className="product"
                     style={{
                       backgroundImage: `url(${product.product_img})`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
                     }}
                   >
                     <h1>{product.name}</h1>
@@ -101,6 +96,7 @@ const Products = () => {
           ) : (
             <p>no products</p>
           )}
+          {}
         </div>
       </div>
     </>

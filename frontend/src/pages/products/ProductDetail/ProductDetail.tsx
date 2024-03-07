@@ -1,8 +1,9 @@
 import "./ProductDetail.scss";
 import { useEffect, useState } from "react";
-import { AJAX } from "../../utils/getJson";
+import { AJAX } from "../../../utils/getJson";
 import { Link, useParams } from "react-router-dom";
-import { API_URL } from "../../config";
+import { API_URL } from "../../../config";
+import Button from "../../../components/Button";
 
 // Define interface for product details
 interface Product {
@@ -36,6 +37,9 @@ const ProductDetail = () => {
           <div className="product product-container">
             <h1>{data.name}</h1>
             <p>{data.description}</p>
+            {/* <Button onClick={}>
+              <Link to={`/cart/`}></Link>
+            </Button> */}
           </div>
         ) : (
           <p>no product</p>
