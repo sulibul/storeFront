@@ -204,17 +204,41 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cross-Origin Resource Sharing
-CORS_ALLOW_ALL_ORIGINS = True
-
-
-CORS_ORIGIN_ALLOW_ALL = True  # <-------- this
+# <-------- this
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",    # React (FrontEnd Url) # <-------- this
+    "http://localhost:5173",
+    "http://192.168.0.32:5173",
+    "http://192.168.0.32:3000",   # React (FrontEnd Url) # <-------- this
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
 ]
-CORS_ALLOW_HEADERS = '*'  # <-------- this
+CORS_ALLOW_HEADERS = ("Access-control-allow-origin",
+                      "access-control-allow-methods", "Access-Control-Allow-Methods", "content-type", "access-control-allow-headers", "X-CSRFToken")
+# <-------- this
 # (Api Base Url) <-------- this
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost',
+    "http://localhost:5173",
+    'http://127.0.0.1:5173',
+    "http://127.0.0.1:3000/",
+    "http://192.168.0.32:3000",
+    "http://localhost:3000/",
+    "http://127.0.0.1:3000/"
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://127.0.0.1:3000"]
 AUTH_USER_MODEL = "users.CustomUser"
 
+CORS_ALLOW_CREDENTIALS = True
 
 CART_SESSION_ID = 'cart'
+
+SESSION_COOKIE_SAMESITE = None
+
+SESSION_COOKIE_AGE = 1200
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_COOKIE_NAME = "sessionid"
+SESSION_COOKIE_SECURE = False
+SESSION_SAVE_EVERY_REQUEST = True

@@ -33,10 +33,10 @@ def getComments(request, product_id=None):
     comments = Comment.objects.all()
     try:
         comments = Comment.objects.get(product_id=product_id)
+        serializer = CommentSerializer(comments)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     except:
-        comments = None
-    serializer = CommentSerializer(comments)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"no_comments": "no comments"}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])

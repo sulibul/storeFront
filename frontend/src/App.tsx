@@ -14,6 +14,7 @@ import Login from "./pages/user/Login.tsx";
 import PrivateRoute from "./utils/PrivateRoute.tsx";
 import UserInfo from "./pages/user/UserInfo.tsx";
 import Register from "./pages/user/Register.tsx";
+import Cart from "./pages/cart/Cart.tsx";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
               path="product/:productId"
               element={<ProductDetail />}
             />
+
+            <Route path="cart/" element={<Cart />} />
 
             <Route path="user/login/" element={<Login />} />
 

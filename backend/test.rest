@@ -31,10 +31,11 @@ GET http://127.0.0.1:8000/api/products?name__icontains=a&price_min=&price_max=
 Content-Type: application/json
 
 ###
-GET http://127.0.0.1:8000/api/products/search?query=
+GET http://127.0.0.1:8000/api/products/3
 Content-Type: application/json
 
 ###
+
 GET http://127.0.0.1:8000/api/cart
 Content-Type: application/json
 
@@ -43,16 +44,7 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/api/cart/
 Content-Type: application/json
 
-{"product":{
-    "id": 1,
-    "company": "Apple",
-    "category": "Computers",
-    "company_id": "1",
-    "category_id": "1",
-    "name": "laptop",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
-    "price": 2000.0,
-    "product_img": "https://picsum.photos/200"
-  },
+{
+    "id": 2,
   "quantity":5
   }

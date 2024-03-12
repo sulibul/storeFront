@@ -2,9 +2,14 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .cart import Cart
+from django.views.decorators.cache import never_cache
+from django.utils.decorators import method_decorator
+decorators = [never_cache,]
+
+
 # Create your views here.
 
-
+@method_decorator(decorators, name='get')
 class CartApiView(APIView):
 
     def get(self, request, format=None):
@@ -15,22 +20,22 @@ class CartApiView(APIView):
 
     def post(self, request, **kwargs):
         cart = Cart(request)
-
+        cart.cart
         if "remove" in request.data:
-            product = request.data["product"]
-            cart.remove(product)
+            product_id = request.data["id"]
+            cart.remove(product_id)
 
         elif "clear" in request.data:
             cart.clear()
 
         else:
             product = request.data
-            # print(product)
-            cart.add(product_id=product["product_id"],
-                     quantity=product["quantity"],
+            cart.add(product_id=product["id"],
+                     quantity=int(product["quantity"]),
                      override_quantity=product["override_quantity"] if
                      "override_quantity" in product else False
                      )
+            # print(request.session['cart'])
 
         return Response(
             {"message": "cart updated"},

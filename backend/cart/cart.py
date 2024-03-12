@@ -6,34 +6,42 @@ from decimal import Decimal
 
 class Cart:
     def __init__(self, request):
-        self.session = request.session
-        cart = self.session.get(settings.CART_SESSION_ID)
+        if not request.session.session_key:
+            request.session.create()
 
-        if not cart:
-            cart = self.session[settings.CART_SESSION_ID] = {}
+        print(request.session.session_key)
+        self.session = request.session
+        cart = self.session.get('cart')
+
+        if cart == None:
+            cart = self.session['cart'] = {}
 
         self.cart = cart
+        self.save()
 
     def save(self):
         self.session.modified = True
 
-    def add(self, product, quantity=1, override_quantity=False):
-        print(product['id'])
-        product_id = str(product['id'])
-
+    def add(self, product_id, quantity=1, override_quantity=False):
+        product_id = str(product_id)
+        cart_product = Product.objects.filter(id__exact=product_id)
+        print(quantity)
         if not product_id in self.cart:
             self.cart[product_id] = {
-                "product_price": str(product["price"]),
+                "product_price": cart_product[0].price,
                 "product_quantity": quantity
             }
-        if override_quantity == True:
-            self.cart[product_id]["product_quantity"] = quantity
+            self.save()
         else:
             self.cart[product_id]["product_quantity"] += quantity
+
+        if override_quantity == True:
+            self.cart[product_id]["product_quantity"] = quantity
+
             self.save()
 
-    def remove(self, product):
-        product_id = str(product.id)
+    def remove(self, product_id):
+        product_id = str(product_id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
@@ -46,9 +54,11 @@ class Cart:
         for product in cart_products:
             cart[str(product.id)]["name"] = ProductSerializer(
                 product).data["name"]
+            cart[str(product.id)]["id"] = ProductSerializer(
+                product).data["id"]
 
         for item in cart.values():
-            item["product_price"] = Decimal(item["product_price"])
+            item["product_price"] = float(item["product_price"])
             item["total_price"] = item["product_price"] * \
                 item["product_quantity"]
             yield item
@@ -57,7 +67,7 @@ class Cart:
         return sum(item["product_quantity"] for item in self.cart.values())
 
     def get_total_price(self):
-        return sum(Decimal(item["product_price"]) * item["product_quantity"] for item in self.cart.values())
+        return sum(float(item["product_price"]) * item["product_quantity"] for item in self.cart.values())
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

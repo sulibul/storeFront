@@ -1,5 +1,8 @@
 import { TIMEOUT_SEC } from "../config";
 import axios from "axios";
+import getCookie from "./getCookie";
+
+axios.defaults.withCredentials = true;
 
 type body = {
   [key: string]: any;
@@ -23,15 +26,17 @@ export const AJAX = async function (
   body: body = {}
 ) {
   try {
+    // body["X-CSRFToken"] = "{{ csrf_token }}";
     const fetchPro = uploadData
       ? axios.post(url, JSON.stringify(body), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
+            "X-CSRFToken": getCookie("csrftoken"),
           },
         })
-      : axios.get(url);
+      : axios.get(url, { withCredentials: true });
 
     const res: any = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
 
