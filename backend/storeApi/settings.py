@@ -49,22 +49,11 @@ INSTALLED_APPS = [
     'users',
     'ads',
     'products',
-    'search',
     'corsheaders',
     'cart'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     # 'DEFAULT_PERMISSION_CLASSES': [
-#     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     # ]
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.AllowAny',
-#     ]
-# }
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

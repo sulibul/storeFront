@@ -1,10 +1,8 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Ad(models.Model):
-    """Class representing a ad"""
+    """Advertisment model"""
     name = models.CharField(max_length=100)
     img_url = models.URLField()
     ad_url = models.URLField()

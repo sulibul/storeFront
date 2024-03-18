@@ -1,7 +1,6 @@
 from django.conf import settings
 from products.models import Product
 from products.serializers import ProductSerializer
-from decimal import Decimal
 
 
 class Cart:
@@ -9,7 +8,6 @@ class Cart:
         if not request.session.session_key:
             request.session.create()
 
-        print(request.session.session_key)
         self.session = request.session
         cart = self.session.get('cart')
 
@@ -25,7 +23,7 @@ class Cart:
     def add(self, product_id, quantity=1, override_quantity=False):
         product_id = str(product_id)
         cart_product = Product.objects.filter(id__exact=product_id)
-        print(quantity)
+
         if not product_id in self.cart:
             self.cart[product_id] = {
                 "product_price": cart_product[0].price,

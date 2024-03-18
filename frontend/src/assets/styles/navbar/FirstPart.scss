@@ -1,0 +1,64 @@
+@use "../utilities/colorVariables" as colors;
+
+.first-part-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  //   padding: 30px;
+  background-color: colors.$themeFirstColor;
+  display: flex;
+  height: 40px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .btn {
+    font-size: 1.25em;
+    border: none;
+  }
+  .search-container {
+    form {
+      flex: 1;
+    }
+    #site-search {
+      border: none;
+      width: 80%;
+      flex: 1;
+      height: 40px;
+      font-size: 20px;
+    }
+    #site-search::placeholder {
+      font: 1.25rem/3 sans-serif;
+    }
+    .submit-search {
+      vertical-align: top;
+      flex: 1;
+      height: 40px;
+      width: 20%;
+      background-color: colors.$themeFirstColor;
+      border: none;
+      background-color: colors.$shopLogoColor;
+    }
+    display: flex;
+    width: 30%;
+  }
+  .left-buttons {
+    .btn {
+      flex: 1;
+      background-color: colors.$themeFirstColor;
+      &.btn-home {
+        background-color: colors.$shopLogoColor;
+      }
+    }
+    display: flex;
+    width: 30%;
+  }
+  .right-buttons {
+    .btn {
+      flex: 1;
+    }
+    width: 40%;
+    display: flex;
+  }
+}

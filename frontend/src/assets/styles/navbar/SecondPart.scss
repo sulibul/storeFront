@@ -1,0 +1,17 @@
+@use "../utilities/colorVariables" as colors;
+
+.second-part-nav {
+  background-color: colors.$themeSecondColor;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  .btn {
+    height: 100%;
+    width: 12%;
+    // border-bottom: none;
+    // border-left: none;
+    // border-top: none;
+    border: none;
+    background-color: colors.$themeSecondColor;
+  }
+}

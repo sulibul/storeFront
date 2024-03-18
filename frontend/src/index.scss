@@ -1,5 +1,10 @@
 body {
   margin: 0;
-  margin-left: 0;
-  margin-right: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#root {
+  width: clamp(200px, 100%, 1500px);
 }

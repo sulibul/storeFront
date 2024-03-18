@@ -1,9 +1,13 @@
-import Carousel from "../components/Carousel";
+import AppendDots from "../components/Carousel";
+import TextContent from "../components/TextContent";
+import "../assets/styles/HomePage.scss";
 
 const HomePage = () => {
   return (
     <>
-      <Carousel></Carousel>
+      <AppendDots></AppendDots>
+      <TextContent></TextContent>
+      <div className="ad-banner"></div>
     </>
   );
 };

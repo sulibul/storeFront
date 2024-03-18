@@ -9,7 +9,6 @@ class ProductFilter(django_filters.FilterSet):
     category = django_filters.ModelMultipleChoiceFilter(
         field_name='category',
         queryset=Category.objects.all(),
-        # method='filterAll',
         conjoined=True)
     company = django_filters.ModelMultipleChoiceFilter(
         field_name='company',

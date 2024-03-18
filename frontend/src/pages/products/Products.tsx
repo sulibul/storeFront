@@ -1,10 +1,10 @@
-import "./Products.scss";
+import "../../assets/styles/Products.scss";
 import { useEffect, useState } from "react";
 import { AJAX } from "../../utils/getJson";
 import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../../config";
 import FilterSideBar from "../../components/FilterSideBar";
-// interface Props {
+// interface Props {frontend/src/styles
 //   name?: string;
 //   company?: string;
 //   category?: string;

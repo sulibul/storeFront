@@ -1,6 +1,6 @@
 import Button from "../Button";
 import Search from "./Search";
-import "./FirstPart.scss";
+import "../../assets/styles/navbar/FirstPart.scss";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
@@ -11,31 +11,31 @@ const FirstPart = () => {
     <>
       <div className="first-part-nav">
         <div className="left-buttons">
-          <Button onClick={() => {}} color="blue">
-            <Link to="">Shops</Link>
+          <Button onClick={() => {}} className="home">
+            <Link to="">BEST SHOP</Link>
           </Button>
-          <Button onClick={() => {}} color="blue">
+          <Button onClick={() => {}} className="products">
             <Link to="/products">Products</Link>
-          </Button>
-          <Button onClick={() => {}} color="blue">
-            <a>Contact</a>
           </Button>
         </div>
         <Search></Search>
         <div className="right-buttons">
-          <Button onClick={() => {}} color="blue">
-            <a>Cart</a>
+          <Button onClick={() => {}} className="cart">
+            <Link to="/cart">Cart</Link>
           </Button>
           {user ? (
-            <Button onClick={logoutUser} color="blue">
+            <Button onClick={logoutUser} className="logout">
               logout
               {/* <Link to="/logout">Logout</Link> */}
             </Button>
           ) : (
-            <Button onClick={() => {}} color="blue">
-              <a>Login/Register</a>
+            <Button onClick={() => {}} className="login">
+              <Link to="user/login/">Login</Link>
             </Button>
           )}
+          <Button onClick={() => {}} className="userinfo">
+            <a>User info</a>
+          </Button>
         </div>
       </div>
     </>

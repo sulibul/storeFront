@@ -1,0 +1,6 @@
+@use "utilities/colorVariables" as colors;
+
+.ad-banner {
+  background-color: colors.$themeFirstColor;
+  height: 300px;
+}

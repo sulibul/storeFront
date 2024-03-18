@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import Products from "./pages/products/Products.tsx";
-import ProductDetail from "./pages/products/ProductDetail/ProductDetail.tsx";
+import ProductDetail from "./pages/products/ProductDetail.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import "./index.scss";
 

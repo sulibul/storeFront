@@ -1,10 +1,10 @@
-import "./ProductDetail.scss";
+import "../../assets/styles/ProductDetail.scss";
 import { useEffect, useState } from "react";
-import { AJAX } from "../../../utils/getJson";
+import { AJAX } from "../../utils/getJson";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { API_URL } from "../../../config";
-import Button from "../../../components/Button";
-import addProductCart from "../../cart/hooks/addProductCart";
+import { API_URL } from "../../config";
+import Button from "../../components/Button";
+import addProductCart from "../cart/hooks/addProductCart";
 
 // Define interface for product details
 interface Product {

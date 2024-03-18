@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import "./SecondPart.scss";
+import "../../assets/styles/navbar/SecondPart.scss";
 
 const SecondPart = () => {
   return (
