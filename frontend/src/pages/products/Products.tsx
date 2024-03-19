@@ -1,9 +1,12 @@
 import "../../assets/styles/Products.scss";
 import { useEffect, useState } from "react";
 import { AJAX } from "../../utils/getJson";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../../config";
 import FilterSideBar from "../../components/FilterSideBar";
+import Button from "../../components/Button";
+import addProductCart from "../cart/hooks/addProductCart";
+
 // interface Props {frontend/src/styles
 //   name?: string;
 //   company?: string;
@@ -14,6 +17,7 @@ import FilterSideBar from "../../components/FilterSideBar";
 
 const Products = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const productQuery = document.querySelector("#products");
 
@@ -64,16 +68,25 @@ const Products = () => {
             checkedValue.length == 0 ? (
               data.map((product) => {
                 return (
-                  <div
-                    className="product"
-                    id={`product${product.id}`}
-                    style={{
-                      backgroundImage: `url(${product.product_img})`,
-                    }}
-                  >
-                    <h1>{product.name}</h1>
-                    <p>{product.description}</p>
-                    <Link to={`/product/${product.id}`}>link to product</Link>
+                  <div className="product-card" id={`product${product.id}`}>
+                    <img src={product.product_img}></img>
+                    <div className="second-part">
+                      <h1>{product.name}</h1>
+                      <div className="product-card-buttons">
+                        <Link to={`/product/${product.id}`}>
+                          {product.price}$
+                        </Link>
+                        <Button
+                          className="add-to-cart"
+                          onClick={() => {
+                            addProductCart(Number(product.id), 1);
+                            navigate("/cart");
+                          }}
+                        >
+                          Add to cart
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 );
               })
@@ -81,15 +94,25 @@ const Products = () => {
               data
                 .filter((product) => checkedValue.includes(product.company))
                 .map((product) => (
-                  <div
-                    className="product"
-                    style={{
-                      backgroundImage: `url(${product.product_img})`,
-                    }}
-                  >
-                    <h1>{product.name}</h1>
-                    <p>{product.description}</p>
-                    <Link to={`/product/${product.id}`}>link to product</Link>
+                  <div className="product-card">
+                    <img src={product.product_img}></img>
+                    <div className="second-part">
+                      <h1>{product.name}</h1>
+                      <div className="product-card-buttons">
+                        <Link to={`/product/${product.id}`}>
+                          {product.price}$
+                        </Link>
+                        <Button
+                          className="add-to-cart"
+                          onClick={() => {
+                            addProductCart(Number(product.id), 1);
+                            navigate("/cart");
+                          }}
+                        >
+                          Add to cart
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 ))
             )

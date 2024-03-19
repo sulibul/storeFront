@@ -1,0 +1,41 @@
+@use "utilities/colorVariables" as colors;
+
+.cart-product-container {
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-right: 20%;
+}
+
+.cart-product {
+  border-radius: 2%;
+  display: flex;
+  width: auto;
+  position: relative;
+  background-color: colors.$themeFirstColor;
+  height: 120px;
+  align-items: center;
+  margin-bottom: 3%;
+  img {
+    height: 100%;
+  }
+  .product-name-cart {
+    margin-left: 70px;
+  }
+
+  .right-elements {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    p {
+      margin-right: 40px;
+    }
+    .btn-plus1-cart {
+      margin-left: 10px;
+    }
+    .btn-minus1-cart {
+      margin-right: 10px;
+    }
+  }
+  //   display: block;
+  //   width: auto;
+}

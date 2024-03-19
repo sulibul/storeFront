@@ -54,6 +54,8 @@ class Cart:
                 product).data["name"]
             cart[str(product.id)]["id"] = ProductSerializer(
                 product).data["id"]
+            cart[str(product.id)]["product_img"] = ProductSerializer(
+                product).data["product_img"]
 
         for item in cart.values():
             item["product_price"] = float(item["product_price"])

@@ -1,18 +1,65 @@
 @use "../utilities/colorVariables" as colors;
 
 .login-container {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
+  height: 200px;
   h1 {
     text-align: center;
+    margin-bottom: 10px;
   }
   form {
+    width: 33%;
+    background-color: colors.$themeFirstColor;
     display: flex;
+    border-radius: 5%;
     flex-direction: column;
-    label {
-      width: 100px; /* Adjust width as needed */
-      text-align: right;
-      margin-right: 10px; /* Add space between label and input */
+    .input {
+      margin: 10px;
+      label {
+        margin-left: 20%;
+        float: left;
+        margin-right: 10px; /* Add space between label and input */
+      }
+      input {
+        margin-right: 20%;
+        float: right;
+      }
     }
+  }
+  .submit-button {
+    margin-top: 10px;
+    align-self: center;
+    width: 100px;
+  }
+}
+.login-page {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  background-color: colors.$themeFirstColor;
+  padding-bottom: 50px;
+}
+
+.register-box {
+  border-radius: 5%;
+  margin-top: 30px;
+  background-color: colors.$shopLogoColor;
+  width: 200px;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    align-self: center;
+  }
+  Button {
+    background-color: colors.$themeFirstColor;
+    border: none;
+    border-radius: 5%;
+    align-self: center;
+    width: 50%;
+    margin-bottom: 10px;
   }
 }

@@ -9,14 +9,16 @@ interface Props {
 const CheckBox = ({ name, value, handleChange }: Props) => {
   return (
     <>
-      <input
-        type="checkbox"
-        id="filter"
-        value={value}
-        name={name}
-        onChange={(event) => handleChange(event)}
-      ></input>
-      <label>{name}</label>
+      <div className="filter-field">
+        <input
+          type="checkbox"
+          id="filter"
+          value={value}
+          name={name}
+          onChange={(event) => handleChange(event)}
+        ></input>
+        <label>{name}</label>
+      </div>
     </>
   );
 };
