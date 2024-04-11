@@ -14,14 +14,14 @@ const FirstPart = () => {
           <Button onClick={() => {}} className="home">
             <Link to="">BEST SHOP</Link>
           </Button>
-          <Button onClick={() => {}} className="products">
-            <Link to="/products">Products</Link>
-          </Button>
         </div>
         <Search></Search>
         <div className="right-buttons">
-          <Button onClick={() => {}} className="cart">
-            <Link to="/cart">Cart</Link>
+          <Button onClick={() => {}} className="products">
+            <Link to="/products">Products</Link>
+          </Button>
+          <Button onClick={() => {}} className="categories">
+            <a>Categories</a>
           </Button>
           {user ? (
             <Button onClick={logoutUser} className="logout">
@@ -33,8 +33,8 @@ const FirstPart = () => {
               <Link to="user/login/">Login</Link>
             </Button>
           )}
-          <Button onClick={() => {}} className="userinfo">
-            <a>User info</a>
+          <Button onClick={() => {}} className="cart">
+            <Link to="/cart">Cart</Link>
           </Button>
         </div>
       </div>

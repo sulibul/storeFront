@@ -1,6 +1,19 @@
 @use "utilities/colorVariables" as colors;
 
-.ad-banner {
+.advertisment {
+  display: flex;
+  background-color: colors.$themeFirstColor;
+  height: 300px;
+}
+
+.margin {
+  display: flex;
+  background-color: colors.$themeSecondColor;
+  height: 30px;
+}
+
+.best-products-container {
+  display: flex;
   background-color: colors.$themeFirstColor;
   height: 300px;
 }

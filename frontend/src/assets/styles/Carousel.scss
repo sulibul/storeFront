@@ -46,13 +46,23 @@
 .carousel_card {
   max-height: 400px;
 }
+.dots {
+  padding-bottom: 10px;
+}
 
 .slick-dots {
   background-color: colors.$themeFirstColor;
+  max-width: 100%;
+  background-color: colors.$themeSecondColor;
+  justify-content: center;
+  position: relative;
   ul {
+    display: flex;
+    color: colors.$themeFirstColor;
     padding: 0;
-    li {
-      width: 15%;
+    margin: 0;
+    div {
+      width: 20%;
     }
   }
 }

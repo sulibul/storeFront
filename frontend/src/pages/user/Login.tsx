@@ -26,14 +26,14 @@ const login = () => {
           </form>
         </div>
         <div className="register-box">
-          <p>No account?</p>
+          <p></p>
           <Button
             onClick={() => {
               navigate("/user/register");
             }}
             className=""
           >
-            <p>Register</p>
+            <a>No account?</a>
           </Button>
         </div>
       </div>

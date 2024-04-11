@@ -12,6 +12,7 @@ function AppendDots() {
 
   const fetchData = async () => {
     const result = await AJAX(`${API_URL}/ad/`);
+    result.pop();
     setData(result);
   };
 
@@ -26,13 +27,8 @@ function AppendDots() {
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots) => (
-      <div
-        style={{
-          borderRadius: "10px",
-          padding: "10px",
-        }}
-      >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
+      <div className="dots">
+        <ul> {dots} </ul>
       </div>
     ),
     customPaging: (i) => <div>{i + 1}</div>,

@@ -4,7 +4,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 #root {
-  width: clamp(200px, 100%, 1500px);
+  width: clamp(200px, 100%, 1440px);
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .site {
+    width: 80%;
+  }
 }

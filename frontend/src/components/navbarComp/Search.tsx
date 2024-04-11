@@ -10,8 +10,7 @@ const Search = () => {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(encodeURIComponent(search));
-    // event.preventDefault();
+    event.preventDefault();
     // Navigate to the search results page with the search query
     navigate(`/search/${encodeURIComponent(search)}`);
   };

@@ -6,7 +6,7 @@ type CustomFunction = (value: string[]) => string[];
 interface Props {
   filters: string[];
   checkedValue: string[];
-  setValue: (arg0: CustomFunction) => void; // Corrected type definition
+  setValue: (arg0: CustomFunction) => void;
 }
 
 const FilterSideBar = ({ filters, checkedValue, setValue }: Props) => {

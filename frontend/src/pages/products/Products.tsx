@@ -7,14 +7,6 @@ import FilterSideBar from "../../components/FilterSideBar";
 import Button from "../../components/Button";
 import addProductCart from "../cart/hooks/addProductCart";
 
-// interface Props {frontend/src/styles
-//   name?: string;
-//   company?: string;
-//   category?: string;
-//   price_min?: Number;
-//   price_max?: Number;
-// }
-
 const Products = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -56,7 +48,6 @@ const Products = () => {
       <div className="grid-container">
         <div className="sidebar-container">
           <FilterSideBar
-            handleCallBack={handleCallBack}
             filters={companies}
             setValue={setValue}
             checkedValue={checkedValue}

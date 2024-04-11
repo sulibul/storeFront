@@ -5,13 +5,14 @@
   height: 30px;
   display: flex;
   justify-content: center;
-  .btn {
-    height: 100%;
-    width: 12%;
-    // border-bottom: none;
-    // border-left: none;
-    // border-top: none;
-    border: none;
+  .button-container {
+    width: 72%;
+    display: flex;
+    justify-content: space-around;
     background-color: colors.$themeSecondColor;
+    .btn {
+      flex: 1;
+      border: none;
+    }
   }
 }

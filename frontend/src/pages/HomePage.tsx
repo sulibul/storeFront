@@ -5,9 +5,10 @@ import "../assets/styles/HomePage.scss";
 const HomePage = () => {
   return (
     <>
-      <AppendDots></AppendDots>
-      <TextContent></TextContent>
-      <div className="ad-banner"></div>
+      {/* <AppendDots></AppendDots> */}
+      <div className="advertisment"></div>
+      <div className="margin"></div>
+      <div className="best-products-container"></div>
     </>
   );
 };

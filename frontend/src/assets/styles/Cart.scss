@@ -36,6 +36,11 @@
       margin-right: 10px;
     }
   }
-  //   display: block;
-  //   width: auto;
+}
+.lower-part-cart {
+  padding: 20px;
+  text-align: right;
+  .btn-remove-cart {
+    margin-left: auto;
+  }
 }
