@@ -1,20 +1,14 @@
 import "../../assets/styles/Products.scss";
 import { useEffect, useState } from "react";
 import { AJAX } from "../../utils/getJson";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { API_URL } from "../../config";
 import FilterSideBar from "../../components/FilterSideBar";
-import Button from "../../components/Button";
-import addProductCart from "../cart/hooks/addProductCart";
 import ProductContainer from "../../components/ProductContainer";
 
 const Products = () => {
   const params = useParams();
-  const navigate = useNavigate();
 
-  const productQuery = document.querySelector("#products");
-
-  let filteredData: string[] = [];
   const [data, setData] = useState<any[]>([]);
   const [checkedValue, setValue] = useState<string[]>([]);
 
@@ -41,8 +35,6 @@ const Products = () => {
       return product.company;
     })
     .filter((value, index, array) => array.indexOf(value) === index);
-
-  const handleCallBack = (filters: string[]) => {};
 
   return (
     <>

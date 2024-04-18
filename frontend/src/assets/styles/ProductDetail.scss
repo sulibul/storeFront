@@ -1,0 +1,107 @@
+@use "../styles/utilities/colorVariables" as colors;
+@use "../styles/utilities/fonts" as fonts;
+
+.product-page {
+  display: flex;
+  background-color: colors.$themeFirstColor;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding-top: 2%;
+}
+.upper-container {
+  max-height: 65vh;
+  img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+  }
+  display: flex;
+  width: 100%;
+}
+
+.product-image {
+  position: relative; // Add this line
+  width: 50%;
+  border-bottom: 1px solid colors.$themeSecondColor;
+  padding-left: 10%;
+  &::after {
+    // Add this block
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0%; // Adjust this to change the height of the border
+    bottom: 5%; // Adjust this to change the height of the border
+    border-right: 1px solid colors.$themeSecondColor;
+    width: 0;
+  }
+}
+.product-info {
+  padding-right: 10%;
+  width: 50%;
+  border-bottom: 1px solid colors.$themeSecondColor;
+  display: flex;
+  flex-direction: column;
+  .product-info-container {
+    display: flex; // Add this line
+    flex-direction: column; // Add this line
+    padding-left: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottom-part-info {
+    margin-top: auto;
+    display: flex;
+    margin-bottom: 15%;
+    padding-left: 10%;
+  }
+  .product-price {
+    width: 50%;
+  }
+  .btn-add-to-cart {
+    width: 50%;
+    border: none;
+    background-color: white;
+  }
+  h2 {
+    text-align: center;
+    font-family: fonts.$poppins-light;
+    font-size: 20pt;
+    margin-bottom: 10%;
+  }
+  .product-description {
+    font-family: fonts.$poppins-light;
+    text-align: center;
+    max-width: 30ch;
+  }
+  .product-price {
+    text-align: center;
+  }
+}
+.comments-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comment {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid black;
+  .comment-user {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 7rem;
+    width: 7rem;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid black;
+  }
+  .comment-content {
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

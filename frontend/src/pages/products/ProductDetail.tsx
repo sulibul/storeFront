@@ -9,62 +9,86 @@ import addProductCart from "../cart/hooks/addProductCart";
 // Define interface for product details
 interface Product {
   name: string;
+  price: number;
+  product_img: string;
   description: string;
   id: number;
   // Add more properties as needed
 }
 
-const ProductDetail = () => {
+function ProductDetail() {
   const { productId } = useParams<{ productId: string }>();
-  const [data, setData] = useState<Product | null>(null);
+  const [productData, setProductData] = useState<Product | null>(null);
   const [comments, setComments] = useState<any>([]);
 
   const navigate = useNavigate();
-  //API get product data
+  //API get product productData
   const fetchProductData = async () => {
     const result = await AJAX(`${API_URL}/products/${productId}`);
     const commentsData = await AJAX(`${API_URL}/comments/${productId}`);
-    setData(result);
-    if (commentsData.no_comments) setComments(null);
-    else setComments(commentsData);
+    setProductData(result);
+
+    console.log(commentsData);
+    if (!commentsData) setComments([]);
+    else if (Array.isArray(commentsData)) setComments(commentsData);
+    else setComments([commentsData]);
   };
 
   useEffect(() => {
     fetchProductData();
-    console.log(comments);
   }, []);
 
   return (
     <>
-      <div className="product-info">
-        {data ? (
-          <div className="product-info-container">
-            <h1>{data.name}</h1>
-            <p>{data.description}</p>
-            <Button
-              onClick={() => {
-                addProductCart(Number(productId), 1);
-                navigate("/cart");
-              }}
-            >
-              <Link to={`/cart`}></Link>
-            </Button>
+      <div className="product-page">
+        <div className="upper-container">
+          <div className="product-image">
+            {productData ? (
+              <img src={productData.product_img} alt={productData.name} />
+            ) : (
+              <p>no image</p>
+            )}
           </div>
-        ) : (
-          <p>no product</p>
-        )}
-      </div>
-      <div className="Comments">
-        {comments == [] ? (
-          comments.map((comment) => (
-            <div className="Comment">{comment.text}</div>
-          ))
-        ) : (
-          <p>no comments</p>
-        )}
+          <div className="product-info">
+            {productData ? (
+              <div className="product-info-container">
+                <h2>{productData.name}</h2>
+                <p className="product-description">{productData.description}</p>
+              </div>
+            ) : (
+              <p>no product</p>
+            )}
+            <div className="bottom-part-info">
+              {productData && (
+                <p className="product-price">{productData.price}$</p>
+              )}
+              <Button
+                className="add-to-cart"
+                onClick={() => {
+                  addProductCart(Number(productId), 1);
+                  navigate("/cart");
+                }}
+              >
+                <p>Add to Cart</p>
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="comments-container">
+          {comments ? (
+            comments.map((comment: any) => (
+              <div className="comment">
+                <div className="comment-user">{comment.user}</div>
+                <div className="comment-content">{comment.text}</div>
+              </div>
+            ))
+          ) : (
+            <p>no comments</p>
+          )}
+        </div>
       </div>
     </>
   );
-};
+}
 
 export default ProductDetail;
