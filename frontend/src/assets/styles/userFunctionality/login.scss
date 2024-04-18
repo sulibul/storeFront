@@ -1,64 +1,89 @@
 @use "../utilities/colorVariables" as colors;
+@use "../utilities/fonts" as fonts;
 
 .login-container {
-  margin-top: 30px;
+  width: 25%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 200px;
+  align-items: center;
+
   h1 {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 17pt;
+    font-family: fonts.$poppins-medium;
   }
+
   form {
-    width: 33%;
-    background-color: colors.$themeFirstColor;
     display: flex;
-    border-radius: 5%;
     flex-direction: column;
-    .input {
-      margin: 10px;
-      label {
-        margin-left: 20%;
-        float: left;
-        margin-right: 10px; /* Add space between label and input */
-      }
-      input {
-        margin-right: 20%;
-        float: right;
-      }
+    align-items: center;
+    width: 100%;
+  }
+
+  .submit-button {
+    font-size: 12pt;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      color: colors.$themeSecondColor;
     }
   }
-  .submit-button {
-    margin-top: 10px;
-    align-self: center;
-    width: 100px;
+
+  .email-input,
+  #email,
+  .password-input,
+  #password {
+    width: 100%;
+    height: 25px;
+  }
+
+  .password-input {
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 }
+
+.submit-button {
+  margin-top: 20px;
+  width: 50%;
+}
+
 .login-page {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: colors.$themeFirstColor;
-  padding-bottom: 50px;
+  height: 500px;
 }
 
 .register-box {
   border-radius: 5%;
-  margin-top: 30px;
   width: 200px;
   display: flex;
-  align-self: center;
   flex-direction: column;
   justify-content: center;
+
   p {
     align-self: center;
   }
-  Button {
-    background-color: colors.$themeFirstColor;
+
+  button {
+    font-family: fonts.$poppins-medium;
+    font-size: 11pt;
+    background: none;
     border: none;
-    border-radius: 5%;
     align-self: center;
     width: 50%;
     margin-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: colors.$themeSecondColor;
+    }
   }
 }

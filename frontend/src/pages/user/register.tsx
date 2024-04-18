@@ -43,7 +43,7 @@ const Register = () => {
         <div className="register-container">
           <form onSubmit={handleSubmit(registerUser)}>
             <h1>Register</h1>
-            <Field label="Email" error={errors.email} required>
+            <Field label="" error={errors.email} required>
               <>
                 <input
                   {...register("email", {
@@ -56,10 +56,12 @@ const Register = () => {
                   })}
                   type="text"
                   id="email"
+                  placeholder="email"
+                  className={`${errors.email ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Password" error={errors.password} required>
+            <Field label="" error={errors.password} required>
               <>
                 <input
                   {...register("password", {
@@ -75,10 +77,12 @@ const Register = () => {
                   })}
                   type="password"
                   id="password"
+                  placeholder="password"
+                  className={`${errors.password ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Name" error={errors.name} required>
+            <Field label="" error={errors.name} required>
               <>
                 <input
                   {...register("name", {
@@ -90,10 +94,12 @@ const Register = () => {
                   })}
                   type="text"
                   id="name"
+                  placeholder="name"
+                  className={`${errors.name ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Surname" error={errors.surname} required>
+            <Field label="" error={errors.surname} required>
               <>
                 <input
                   {...register("surname", {
@@ -105,10 +111,12 @@ const Register = () => {
                   })}
                   type="text"
                   id="surname"
+                  placeholder="surname"
+                  className={`${errors.surname ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Date of Birth" error={errors.date_of_birth} required>
+            <Field label="" error={errors.date_of_birth} required>
               <>
                 <input
                   {...register("date_of_birth", {
@@ -116,19 +124,23 @@ const Register = () => {
                   })}
                   type="date"
                   id="date_of_birth"
+                  placeholder="date of birth"
+                  className={`${errors.date_of_birth ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="City" error={errors.city} required>
+            <Field label="" error={errors.city} required>
               <>
                 <input
                   {...register("city", { required: "City is required" })}
                   type="text"
                   id="city"
+                  placeholder="city"
+                  className={`${errors.city ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Postal Code" error={errors.post_code} required>
+            <Field label="" error={errors.post_code} required>
               <>
                 <input
                   {...register("post_code", {
@@ -140,10 +152,12 @@ const Register = () => {
                   })}
                   type="text"
                   id="post_code"
+                  placeholder="postal code"
+                  className={`${errors.post_code ? "alert-active" : ""}`}
                 />
               </>
             </Field>
-            <Field label="Street" error={errors.street} required>
+            <Field label="" error={errors.street} required>
               <>
                 <input
                   {...register("street", {
@@ -153,8 +167,10 @@ const Register = () => {
                       message: "Street cannot be longer than 50 characters",
                     },
                   })}
+                  className={`${errors.street ? "alert-active" : ""}`}
                   type="text"
                   id="street"
+                  placeholder="street"
                 />
               </>
             </Field>

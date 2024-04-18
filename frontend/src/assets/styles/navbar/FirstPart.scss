@@ -5,8 +5,7 @@
   display: flex;
   margin: 0;
   background-color: colors.$themeSecondColor;
-  display: flex;
-  height: 6%;
+  height: 35px;
   a {
     text-decoration: none;
     color: colors.$themeFirstColor;
@@ -22,13 +21,12 @@
       flex: 1;
     }
     #site-search {
-      background-color: colors.$themeSecondColor;
+      background-color: colors.$themeFirstColor;
       opacity: 80%;
       border: none;
+      height: 35px;
       width: 60%;
       flex: 1;
-      font-size: 20px;
-      color: white;
     }
     #site-search::placeholder {
       color: white;

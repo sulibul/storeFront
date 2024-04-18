@@ -6,6 +6,7 @@ import { API_URL } from "../../config";
 import FilterSideBar from "../../components/FilterSideBar";
 import Button from "../../components/Button";
 import addProductCart from "../cart/hooks/addProductCart";
+import ProductContainer from "../../components/ProductContainer";
 
 const Products = () => {
   const params = useParams();
@@ -54,58 +55,21 @@ const Products = () => {
           ></FilterSideBar>
         </div>
         <div className="product-container">
+          <div className="sort-control"></div>
           {data ? (
             // check if any filters are active
             checkedValue.length == 0 ? (
               data.map((product) => {
-                return (
-                  <div className="product-card" id={`product${product.id}`}>
-                    <img src={product.product_img}></img>
-                    <div className="second-part">
-                      <h1>{product.name}</h1>
-                      <div className="product-card-buttons">
-                        <Link to={`/product/${product.id}`}>
-                          {product.price}$
-                        </Link>
-                        <Button
-                          className="add-to-cart"
-                          onClick={() => {
-                            addProductCart(Number(product.id), 1);
-                            navigate("/cart");
-                          }}
-                        >
-                          Add to cart
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                );
+                return <ProductContainer product={product}></ProductContainer>;
               })
             ) : (
               data
                 .filter((product) => checkedValue.includes(product.company))
-                .map((product) => (
-                  <div className="product-card">
-                    <img src={product.product_img}></img>
-                    <div className="second-part">
-                      <h1>{product.name}</h1>
-                      <div className="product-card-buttons">
-                        <Link to={`/product/${product.id}`}>
-                          {product.price}$
-                        </Link>
-                        <Button
-                          className="add-to-cart"
-                          onClick={() => {
-                            addProductCart(Number(product.id), 1);
-                            navigate("/cart");
-                          }}
-                        >
-                          Add to cart
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))
+                .map((product) => {
+                  return (
+                    <ProductContainer product={product}></ProductContainer>
+                  );
+                })
             )
           ) : (
             <p>no products</p>

@@ -1,0 +1,23 @@
+@use "../styles/utilities/fonts" as fonts;
+
+.product-card {
+  margin: 15%;
+  margin-top: 4%;
+  padding: 8%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.5px solid;
+}
+.product-name {
+  font-family: fonts.$poppins-medium;
+  font-size: 20px;
+  align-self: center;
+}
+.product-price {
+  font-family: fonts.$poppins-light;
+  align-self: center;
+  text-decoration: none;
+  font-size: 18px;
+  margin-bottom: 5%;
+  color: black;
+}

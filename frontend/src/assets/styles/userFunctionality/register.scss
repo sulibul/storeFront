@@ -1,51 +1,91 @@
 @use "../utilities/colorVariables" as colors;
+@use "../utilities/fonts" as fonts;
 
 .register-page {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: colors.$themeFirstColor;
-  padding-bottom: 50px;
+  height: 700px;
 }
 
 .register-container {
-  margin-top: 30px;
+  margin-top: 5%;
+  width: 25%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
   h1 {
+    font-family: fonts.$poppins-medium;
     text-align: center;
     margin-bottom: 10px;
+    font-size: 17pt;
   }
+
   form {
-    width: 33%;
+    width: 100%;
     background-color: colors.$themeFirstColor;
     display: flex;
-    border-radius: 5%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0%;
     flex-direction: column;
+
     .input {
       margin: 10px;
     }
-    div {
-      margin-top: 20px;
-    }
-    label {
-      float: left;
-      padding-left: 20%;
-    }
-    input {
-      float: right;
-      margin-right: 20%;
-    }
+
     p {
-      margin-top: 30px;
+      margin: 0;
       text-align: center;
+      padding-bottom: 2%;
+    }
+
+    div {
+      width: 100%;
+    }
+
+    input {
+      margin-bottom: 20px;
+      height: 25px;
+      width: 100%;
+    }
+
+    .alert-active {
+      border: red 1px solid;
+      margin-bottom: 8px;
+      margin-top: 5px;
+    }
+    p[role="alert"] {
+      font-family: fonts.$poppins-light;
+      font-size: 10pt;
+    }
+
+    #email {
+      margin-top: 10px;
     }
   }
+
   .submit-button {
-    margin-left: 83px;
-    margin-top: 10px;
+    margin: 0 auto; // Center the button horizontally
     align-self: center;
+    justify-content: center;
     width: 100px;
+    font-family: fonts.$poppins-medium;
+    font-size: 13pt;
+    background: none;
+    border: none;
+    align-self: center;
+    width: 50%;
+    cursor: pointer; // Changes the cursor to a hand when hovering over the button
+
+    &:hover {
+      color: colors.$themeSecondColor; // Changes the text color when hovering over the button
+    }
   }
+
   padding-bottom: 100px;
 }

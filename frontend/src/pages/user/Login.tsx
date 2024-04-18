@@ -15,14 +15,17 @@ const login = () => {
           <form onSubmit={loginUser}>
             <h1>Login</h1>
             <div className="input email-input">
-              <label>Email</label>
-              <input type="text" name="email" id="email" />
+              <input type="text" name="email" id="email" placeholder="Email" />
             </div>
             <div className="input password-input">
-              <label>Password</label>
-              <input type="password" name="password" id="password" />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
             </div>
-            <input className="submit-button" type="submit" value="Login" />
+            <input className="submit-button" type="submit" value="Submit" />
           </form>
         </div>
         <div className="register-box">

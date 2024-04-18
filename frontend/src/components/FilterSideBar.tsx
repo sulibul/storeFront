@@ -28,6 +28,7 @@ const FilterSideBar = ({ filters, checkedValue, setValue }: Props) => {
   return (
     <>
       <form>
+        <h3>Companies</h3>
         {filters.map((company: string) => (
           <CheckBox
             name={company}
