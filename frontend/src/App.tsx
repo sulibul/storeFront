@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.scss";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
@@ -29,7 +26,7 @@ function App() {
               element={<Products />}
               exact
             />
-            <Route path="search/:query" element={<Products />} exact />
+            <Route path="search/:query?" element={<Products />} exact />
             <Route
               exact
               path="product/:productId"
@@ -51,9 +48,6 @@ function App() {
               }
             />
 
-            {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-                routes for. */}
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AJAX } from "../../utils/getJson";
 import { API_URL } from "../../config";
 import clearCart from "./hooks/clearCart";
-
 import "../../assets/styles/Cart.scss";
-
 import Button from "../../components/Button";
 import CartCard from "../../components/cartComponents/CartCard";
 
-export type cartProduct = {
+export type CartProduct = {
   id: number;
   product_price: number;
   product_quantity: number;
@@ -17,17 +15,25 @@ export type cartProduct = {
   product_img: string;
 };
 
-type cartInfo = { cart_total_price: number; number_of_all_products: number };
+type CartInfo = {
+  cart_total_price: number;
+  number_of_all_products: number;
+};
 
 const Cart = () => {
-  const [cartProducts, setCartProducts] = useState<cartProduct[]>([]);
-  const [cartInfo, setCartInfo] = useState<cartInfo>({
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
+  const [cartInfo, setCartInfo] = useState<CartInfo>({
     cart_total_price: 0,
     number_of_all_products: 0,
   });
 
+  const waitOneSecond = () => {
+    return new Promise((resolve) => setTimeout(resolve, 250));
+  };
+
   const fetchCartData = async () => {
     try {
+      await waitOneSecond();
       const result = await AJAX(`${API_URL}/cart/`);
       setCartProducts(result.data);
       setCartInfo({
@@ -41,9 +47,7 @@ const Cart = () => {
 
   const updateView = (id: number) => {
     setCartProducts(
-      cartProducts.filter(function (product: cartProduct) {
-        return product.id != id;
-      })
+      cartProducts.filter((product: CartProduct) => product.id !== id)
     );
   };
 
@@ -55,15 +59,16 @@ const Cart = () => {
     <>
       <div className="cart-product-container">
         {cartProducts.length !== 0 ? (
-          cartProducts.map((product: cartProduct, index: number) => (
+          cartProducts.map((product: CartProduct, index: number) => (
             <CartCard
+              key={product.id}
               product={product}
               index={index}
               removeProduct={updateView}
-            ></CartCard>
+            />
           ))
         ) : (
-          <p>no products in cart</p>
+          <p className="empty-cart-alert">no products in cart</p>
         )}
       </div>
       <div className="lower-part-cart">
@@ -76,6 +81,7 @@ const Cart = () => {
         >
           Remove all products
         </Button>
+        <p>Value of products: {cartInfo.cart_total_price}$</p>
       </div>
     </>
   );

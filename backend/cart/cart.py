@@ -9,13 +9,12 @@ class Cart:
             request.session.create()
 
         self.session = request.session
-        cart = self.session.get('cart')
+        cart = self.session.get("cart")
 
         if cart == None:
-            cart = self.session['cart'] = {}
+            cart = self.session["cart"] = {}
 
         self.cart = cart
-        self.save()
 
     def save(self):
         self.session.modified = True
@@ -27,12 +26,12 @@ class Cart:
         if not product_id in self.cart:
             self.cart[product_id] = {
                 "product_price": cart_product[0].price,
-                "product_quantity": quantity
+                "product_quantity": quantity,
             }
             self.save()
         else:
             self.cart[product_id]["product_quantity"] += quantity
-
+            self.save()
         if override_quantity == True:
             self.cart[product_id]["product_quantity"] = quantity
 
@@ -50,24 +49,25 @@ class Cart:
         cart = self.cart.copy()
 
         for product in cart_products:
-            cart[str(product.id)]["name"] = ProductSerializer(
-                product).data["name"]
-            cart[str(product.id)]["id"] = ProductSerializer(
-                product).data["id"]
-            cart[str(product.id)]["product_img"] = ProductSerializer(
-                product).data["product_img"]
+            cart[str(product.id)]["name"] = ProductSerializer(product).data["name"]
+            cart[str(product.id)]["id"] = ProductSerializer(product).data["id"]
+            cart[str(product.id)]["product_img"] = ProductSerializer(product).data[
+                "product_img"
+            ]
 
         for item in cart.values():
             item["product_price"] = float(item["product_price"])
-            item["total_price"] = item["product_price"] * \
-                item["product_quantity"]
+            item["total_price"] = item["product_price"] * item["product_quantity"]
             yield item
 
     def __len__(self):
         return sum(item["product_quantity"] for item in self.cart.values())
 
     def get_total_price(self):
-        return sum(float(item["product_price"]) * item["product_quantity"] for item in self.cart.values())
+        return sum(
+            float(item["product_price"]) * item["product_quantity"]
+            for item in self.cart.values()
+        )
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

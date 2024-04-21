@@ -27,8 +27,6 @@ function ProductDetail() {
     const result = await AJAX(`${API_URL}/products/${productId}`);
     const commentsData = await AJAX(`${API_URL}/comments/${productId}`);
     setProductData(result);
-
-    console.log(commentsData);
     if (!commentsData) setComments([]);
     else if (Array.isArray(commentsData)) setComments(commentsData);
     else setComments([commentsData]);

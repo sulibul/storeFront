@@ -1,46 +1,72 @@
 @use "utilities/colorVariables" as colors;
+@use "utilities/fonts" as fonts;
 
 .cart-product-container {
   padding-top: 2%;
   padding-left: 15%;
   padding-right: 20%;
+  min-height: 40vh;
+  background-color: colors.$themeFirstColor;
+  padding-bottom: 1rem;
 }
 
 .cart-product {
-  border-radius: 2%;
+  font-family: fonts.$poppins-light;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   display: flex;
-  width: auto;
-  position: relative;
-  background-color: colors.$themeFirstColor;
-  height: 120px;
+  height: 7.5rem;
   align-items: center;
-  margin-bottom: 3%;
+  justify-content: space-between; // Add this line
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid black;
   img {
     height: 100%;
   }
   .product-name-cart {
-    margin-left: 70px;
+    font-size: 1.3em;
+    padding-top: 0.5rem;
   }
-
   .right-elements {
+    padding-top: 0.5rem;
+    width: 40%;
     display: flex;
-    position: absolute;
-    right: 0px;
-    p {
-      margin-right: 40px;
+    align-items: center; // Add this line
+    justify-content: space-between;
+    button {
+      border: none;
+      background-color: colors.$themeFirstColor;
+      cursor: pointer; // Add this line
     }
-    .btn-plus1-cart {
-      margin-left: 10px;
-    }
-    .btn-minus1-cart {
-      margin-right: 10px;
+    img {
+      height: 2rem;
     }
   }
 }
 .lower-part-cart {
-  padding: 20px;
-  text-align: right;
-  .btn-remove-cart {
+  font-family: fonts.$poppins-light;
+  display: flex;
+  background-color: colors.$themeFirstColor;
+  padding-bottom: 2rem;
+  font-size: 1.3em;
+  padding-left: 15%;
+  padding-right: 15%;
+  p {
+    padding: 1rem;
+    margin: 0;
     margin-left: auto;
   }
+  .btn-remove-cart {
+    border: black solid 0.5px;
+    background-color: colors.$themeSecondColor;
+    color: colors.$themeFirstColor;
+    height: 3rem;
+    cursor: pointer; // Add this line
+  }
+}
+.empty-cart-alert {
+  text-align: center;
+  font-family: fonts.$poppins-medium;
+  font-size: 1.5em;
 }

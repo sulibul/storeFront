@@ -45,6 +45,6 @@ POST http://127.0.0.1:8000/api/cart/
 Content-Type: application/json
 
 {
-    "id": 2,
+    "id": 4,
   "quantity":5
   }

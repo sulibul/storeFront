@@ -4,23 +4,59 @@ import CheckBox from "./CheckBox";
 type CustomFunction = (value: string[]) => string[];
 
 interface Props {
+  companies: string[];
+  categories: string[];
   filters: string[];
-  checkedValue: string[];
-  setValue: (arg0: CustomFunction) => void;
+  setFilters: (arg0: CustomFunction) => void;
 }
 
-const FilterSideBar = ({ filters, checkedValue, setValue }: Props) => {
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+const FilterSideBar = ({
+  companies,
+  categories,
+  filters,
+  setFilters,
+}: Props) => {
+  function handleChangeCompany(event: React.ChangeEvent<HTMLInputElement>) {
     const { value, checked } = event.target;
     console.log(value);
     console.log(checked);
     if (checked) {
-      setValue((prevCheckedValues) => [...prevCheckedValues, value]);
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        companies: [...prevFilters.companies, value],
+      }));
     } else {
-      setValue((prevCheckedValues) => {
-        return [
-          ...prevCheckedValues.filter((filter: string) => filter != value),
-        ];
+      setFilters((prevFilters) => {
+        return {
+          ...prevFilters,
+          companies: [
+            ...prevFilters.companies.filter(
+              (filter: string) => filter != value
+            ),
+          ],
+        };
+      });
+    }
+  }
+  function handleChangeCategory(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, checked } = event.target;
+    console.log(value);
+    console.log(checked);
+    if (checked) {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        categories: [...prevFilters.categories, value],
+      }));
+    } else {
+      setFilters((prevFilters) => {
+        return {
+          ...prevFilters,
+          categories: [
+            ...prevFilters.categories.filter(
+              (filter: string) => filter != value
+            ),
+          ],
+        };
       });
     }
   }
@@ -29,11 +65,19 @@ const FilterSideBar = ({ filters, checkedValue, setValue }: Props) => {
     <>
       <form>
         <h3>Companies</h3>
-        {filters.map((company: string) => (
+        {companies.map((company: string) => (
           <CheckBox
             name={company}
             value={company}
-            handleChange={handleChange}
+            handleChange={handleChangeCompany}
+          ></CheckBox>
+        ))}
+        <h3>Categories</h3>
+        {categories.map((category: string) => (
+          <CheckBox
+            name={category}
+            value={category}
+            handleChange={handleChangeCategory}
           ></CheckBox>
         ))}
       </form>

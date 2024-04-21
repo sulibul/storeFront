@@ -3,6 +3,7 @@ import { cartProduct } from "../../pages/cart/Cart";
 import addProductCart from "../../pages/cart/hooks/addProductCart";
 import Button from "../../components/Button";
 import removeProductCart from "../../pages/cart/hooks/removeProductCart";
+import trash_icon from "../../assets/icons/trash_icon.png";
 
 interface CartCard {
   product: cartProduct;
@@ -68,7 +69,7 @@ const CartCard = ({ product, index, removeProduct }: CartCard) => {
               removeProduct(product.id);
             }}
           >
-            Remove
+            <img src={trash_icon} />
           </Button>
         </div>
       </div>

@@ -11,8 +11,9 @@
   padding-left: 20%;
   display: flex;
   border-right: 0.5px solid;
+  flex-direction: column;
   h3 {
-    margin-top: 30%;
+    margin-top: 2rem;
     margin-bottom: 5%;
     font-family: fonts.$poppins-light;
     font-size: 15pt;
@@ -57,12 +58,22 @@
   .filter-field {
     margin-bottom: 5%;
   }
+  .btn-submit-button {
+    margin-top: 10%;
+    width: 7rem;
+  }
 }
+
 .product-container {
   .sort-control {
     grid-column: span 3;
     height: 30px;
     border-bottom: 0.5px solid;
+  }
+  div.pagination {
+    display: flex;
+    grid-column: span 3;
+    justify-content: center;
   }
   display: grid;
   grid-template-columns: 33% 33% 33%;
