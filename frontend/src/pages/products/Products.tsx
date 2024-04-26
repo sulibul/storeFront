@@ -11,6 +11,8 @@ import Pagination from "../../components/Pagination";
 type Filters = {
   companies: string[];
   categories: string[];
+  priceMin: number;
+  priceMax: number;
 };
 
 const Products = () => {
@@ -21,11 +23,15 @@ const Products = () => {
   const [filters, setFilters] = useState<Filters>({
     companies: [],
     categories: [],
+    priceMin: 0,
+    priceMax: 0,
   });
   const [filteredData, setFilteredData] = useState<any[]>([]);
   //set companies and categories for filter sidebar
   const companies = [...new Set(data.map((product) => product.company))];
   const categories = [...new Set(data.map((product) => product.category))];
+  const indexOfLastproduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastproduct - productsPerPage;
 
   const fetchData = async () => {
     //check if query is present in params
@@ -46,8 +52,14 @@ const Products = () => {
     fetchData();
   }, [data]);
 
+  // filter data based on filters
   const filterData = () => {
-    if (filters.companies.length === 0 && filters.categories.length === 0) {
+    if (
+      filters.companies.length === 0 &&
+      filters.categories.length === 0 &&
+      !filters.priceMin &&
+      !filters.priceMax
+    ) {
       setFilteredData([]);
       return;
     }
@@ -62,6 +74,14 @@ const Products = () => {
         filters.categories.includes(product.category)
       );
     }
+
+    if (filters.priceMin && filters.priceMax) {
+      filteredProducts = filteredProducts.filter(
+        (product) =>
+          product.price >= filters.priceMin && product.price <= filters.priceMax
+      );
+    }
+
     if (filteredProducts.length === 0) {
       alert("No products found");
       setFilteredData([]);
@@ -69,9 +89,6 @@ const Products = () => {
     }
     setFilteredData(filteredProducts);
   };
-
-  const indexOfLastproduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastproduct - productsPerPage;
 
   const handlePagination = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -87,8 +104,33 @@ const Products = () => {
             setFilters={setFilters}
             checkedValue={filters}
           ></FilterSideBar>
+          <div className="price-filters">
+            <h3>Price</h3>
+            <div className="price-filter">
+              <label htmlFor="min-price">Min</label>
+              <input
+                id="min-price"
+                type="number"
+                onChange={(e) =>
+                  setFilters({ ...filters, priceMin: parseInt(e.target.value) })
+                }
+                value={filters.priceMin || ""}
+              ></input>
+            </div>
+            <div className="price-filter">
+              <label htmlFor="max-price">Max</label>
+              <input
+                id="max-price"
+                type="number"
+                onChange={(e) =>
+                  setFilters({ ...filters, priceMax: parseInt(e.target.value) })
+                }
+                value={filters.priceMax || ""}
+              ></input>
+            </div>
+          </div>
           <Button className="submit-button" onClick={() => filterData()}>
-            submit
+            Submit
           </Button>
         </div>
         <div className="product-container">

@@ -26,7 +26,7 @@ const FirstPart = () => {
           {user ? (
             <Button onClick={logoutUser} className="logout">
               logout
-              {/* <Link to="/logout">Logout</Link> */}
+              <Link to="/logout">Logout</Link>
             </Button>
           ) : (
             <Button onClick={() => {}} className="login">

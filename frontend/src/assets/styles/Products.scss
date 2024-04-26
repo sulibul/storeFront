@@ -8,12 +8,12 @@
 }
 
 .sidebar-container {
-  padding-left: 20%;
+  padding-left: 1rem;
   display: flex;
   border-right: 0.5px solid;
   flex-direction: column;
   h3 {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 5%;
     font-family: fonts.$poppins-light;
     font-size: 15pt;
@@ -61,6 +61,20 @@
   .btn-submit-button {
     margin-top: 10%;
     width: 7rem;
+    margin-left: auto;
+    margin-right: 3rem;
+    font-family: fonts.$poppins-light;
+  }
+  .price-filter {
+    display: flex;
+    label {
+      margin-left: 0.5rem;
+    }
+    input {
+      margin-left: auto;
+      margin-right: 3rem;
+      width: 5rem;
+    }
   }
 }
 

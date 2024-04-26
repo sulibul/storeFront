@@ -2,22 +2,26 @@
 @use "../styles/utilities/fonts" as fonts;
 
 .footer-container {
-  margin-left: 2%;
-  margin-top: 15px;
+  margin-left: 0.6rem;
+  margin-top: 1rem;
   width: 50%;
   display: flex;
 }
 
 .footer-column {
-  width: 30%;
+  margin-right: 2rem;
   color: colors.$themeFirstColor;
   font-family: fonts.$inter-bold;
   ul {
     font-family: fonts.$inter-light;
     padding: 0;
     list-style-type: none;
+
     li {
       margin-bottom: 10px;
+      a {
+        text-decoration: none;
+      }
     }
   }
 }
