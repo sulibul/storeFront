@@ -12,6 +12,8 @@ import PrivateRoute from "./utils/PrivateRoute.tsx";
 import UserInfo from "./pages/user/UserInfo.tsx";
 import Register from "./pages/user/Register.tsx";
 import Cart from "./pages/cart/Cart.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
+import AboutUsPage from "./pages/AboutUsPage.tsx";
 
 function App() {
   return (
@@ -38,7 +40,8 @@ function App() {
             <Route path="user/login/" element={<Login />} />
 
             <Route path="user/register" element={<Register />} />
-
+            <Route path="contact/" element={<ContactPage />} />
+            <Route path="aboutus/" element={<AboutUsPage />} />
             <Route
               path="user/info"
               element={

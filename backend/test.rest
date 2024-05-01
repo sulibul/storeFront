@@ -48,3 +48,9 @@ Content-Type: application/json
     "id": 4,
   "quantity":5
   }
+
+POST http://127.0.0.1:8000/cart/order
+Content-Type: application/json
+
+{
+  }

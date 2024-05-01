@@ -1,6 +1,7 @@
 from django.conf import settings
 from products.models import Product
 from products.serializers import ProductSerializer
+from .models import Order, Positsion
 
 
 class Cart:
@@ -72,3 +73,20 @@ class Cart:
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.save()
+
+    def create_order(self):
+
+        order = Order.objects.create(
+            order_user=self.session["user_id"],
+            order_total=self.get_total_price(),
+            order_status="created",
+        )
+
+        for item in self.cart.values():
+            Positsion.objects.create(
+                product_id=item["id"],
+                quantity=item["product_quantity"],
+                order=order["id"],
+                price=item["product_price"] * item["product_quantity"],
+            )
+        return order

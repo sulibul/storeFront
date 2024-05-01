@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .cart import Cart
+from .models import Order
+from .serializers import OrderSerializer
 
 
 class CartApiView(APIView):
@@ -41,3 +43,24 @@ class CartApiView(APIView):
             )
 
         return Response({"message": "cart updated"}, status=status.HTTP_202_ACCEPTED)
+
+
+class OrderApiView(APIView):
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            orders = Order.objects.filter(order_user=request.user)
+            serializer = OrderSerializer(orders, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(
+                {"error": "You are not authenticated"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+    def post(self, request):
+        cart = Cart(request)
+        order = cart.create_order()
+
+        cart.clear()
+        return Response({"order_id": order.id}, status=status.HTTP_201_CREATED)

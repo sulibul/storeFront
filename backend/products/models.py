@@ -30,12 +30,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_price(self):
+        return self.price
+
 
 class Comment(models.Model):
     author = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+        CustomUser, on_delete=models.CASCADE, null=True, blank=True
+    )
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, null=True, blank=True)
+        Product, on_delete=models.CASCADE, null=True, blank=True
+    )
     text = models.TextField(max_length=200, null=True)
     rating = models.IntegerField(choices=Choices)
     updated_at = models.DateTimeField(auto_now=True)

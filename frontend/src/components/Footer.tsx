@@ -8,9 +8,12 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Informations</h3>
           <ul className="footer-categories">
-            <li>Contact</li>
-            <li>About us</li>
-            <li>Deliveries</li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/aboutus">About Us</Link>
+            </li>
           </ul>
         </div>
         <div className="footer-column">

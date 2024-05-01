@@ -1,0 +1,11 @@
+@use "utilities/colorVariables" as colors;
+@use "../styles/utilities/fonts" as fonts;
+
+.contact-page {
+  display: flex;
+  background-color: colors.$themeFirstColor;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: fonts.$poppins-light;
+}
