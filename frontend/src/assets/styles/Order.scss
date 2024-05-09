@@ -1,0 +1,37 @@
+@use "utilities/colorVariables" as colors;
+@use "../styles/utilities/fonts" as fonts;
+
+.order-container {
+  display: grid;
+  position: relative;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  flex-direction: row;
+  align-items: center;
+  background-color: colors.$themeFirstColor;
+  font-family: fonts.$poppins-light;
+  padding-bottom: 1rem;
+  height: 7.5rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid black;
+
+  p {
+    font-family: fonts.$poppins-light;
+    font-size: 1.3rem;
+    padding-left: 5rem;
+  }
+
+  #product-name {
+    font-size: 1.3rem;
+    padding-left: 0rem;
+  }
+  #product-quantity {
+    font-size: 1.3rem;
+    padding-right: 0rem;
+  }
+  img {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    height: 8rem;
+    border-right: 1px solid black;
+  }
+}

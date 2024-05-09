@@ -1,9 +1,11 @@
 import { TIMEOUT_SEC } from "../config";
 import axios from "axios";
 import getCookie from "./getCookie";
+import { jwtDecode } from "jwt-decode";
 
 axios.defaults.withCredentials = true;
 
+let payload = null;
 type body = {
   [key: string]: any;
   // Define specific keys with their types if needed
@@ -26,7 +28,13 @@ export const AJAX = async function (
   body: body = {}
 ) {
   try {
-    // body["X-CSRFToken"] = "{{ csrf_token }}";
+    if (localStorage.getItem("authTokens")) {
+      const token = localStorage.getItem("authTokens");
+      payload = jwtDecode(token);
+      console.log(payload);
+    } else {
+      payload = null;
+    }
     const fetchPro = uploadData
       ? axios.post(url, JSON.stringify(body), {
           method: "POST",
@@ -34,15 +42,17 @@ export const AJAX = async function (
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
             "X-CSRFToken": getCookie("csrftoken"),
+            "user-id": payload?.id,
           },
         })
-      : axios.get(url, { withCredentials: true });
+      : axios.get(url, { headers: { "user-id": payload?.id } });
 
     const res: any = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
 
     const data = await res.data;
     return data;
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };

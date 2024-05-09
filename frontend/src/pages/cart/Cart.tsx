@@ -5,8 +5,12 @@ import clearCart from "./hooks/clearCart";
 import "../../assets/styles/Cart.scss";
 import Button from "../../components/Button";
 import CartCard from "../../components/cartComponents/CartCard";
+import postOrder from "./hooks/postOrder";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-export type CartProduct = {
+type CartProduct = {
   id: number;
   product_price: number;
   product_quantity: number;
@@ -21,6 +25,8 @@ type CartInfo = {
 };
 
 const Cart = () => {
+  let navigate = useNavigate();
+  let { user, logoutUser } = useContext(AuthContext);
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
   const [cartInfo, setCartInfo] = useState<CartInfo>({
     cart_total_price: 0,
@@ -49,6 +55,10 @@ const Cart = () => {
     setCartProducts(
       cartProducts.filter((product: CartProduct) => product.id !== id)
     );
+  };
+  const routeChange = () => {
+    navigate("/user/login/", { replace: true });
+    alert("You need to be logged in to make an order.");
   };
 
   useEffect(() => {
@@ -80,6 +90,18 @@ const Cart = () => {
           }}
         >
           Remove all products
+        </Button>
+        <Button
+          className="make-order"
+          onClick={() => {
+            cartProducts.length === 0
+              ? alert("You need to have products in cart to make an order.")
+              : user
+              ? postOrder()
+              : routeChange();
+          }}
+        >
+          Order
         </Button>
         <p>Value of products: {cartInfo.cart_total_price}$</p>
       </div>

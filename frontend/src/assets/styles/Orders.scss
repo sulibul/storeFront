@@ -1,0 +1,17 @@
+@use "utilities/colorVariables" as colors;
+@use "../styles/utilities/fonts" as fonts;
+
+.orders-page {
+  padding: 3rem;
+  background-color: colors.$themeFirstColor;
+  p {
+    margin-top: 0px;
+  }
+  h2 {
+    background-color: colors.$themeSecondColor;
+    color: colors.$themeFirstColor;
+    text-align: center;
+    font-size: 16pt;
+    font-family: fonts.$inter-bold;
+  }
+}

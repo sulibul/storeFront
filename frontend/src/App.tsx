@@ -14,6 +14,7 @@ import Register from "./pages/user/Register.tsx";
 import Cart from "./pages/cart/Cart.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import AboutUsPage from "./pages/AboutUsPage.tsx";
+import Orders from "./pages/user/Orders.tsx";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="user/orders/" element={<Orders />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>

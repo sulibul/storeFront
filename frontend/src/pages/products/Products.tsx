@@ -50,7 +50,7 @@ const Products = () => {
 
   useEffect(() => {
     fetchData();
-  }, [data]);
+  }, []);
 
   // filter data based on filters
   const filterData = () => {

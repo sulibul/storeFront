@@ -4,13 +4,17 @@ from rest_framework.response import Response
 from .cart import Cart
 from .models import Order
 from .serializers import OrderSerializer
+from rest_framework_simplejwt.backends import TokenBackend
+from rest_framework.exceptions import ValidationError
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+from rest_framework.authentication import TokenAuthentication
 
 
 class CartApiView(APIView):
 
     def get(self, request):
         cart = Cart(request)
-        print(list(cart.__iter__()))
         return Response(
             {
                 "data": list(cart.__iter__()),
@@ -48,19 +52,15 @@ class CartApiView(APIView):
 class OrderApiView(APIView):
 
     def get(self, request):
-        if request.user.is_authenticated:
-            orders = Order.objects.filter(order_user=request.user)
-            serializer = OrderSerializer(orders, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(
-                {"error": "You are not authenticated"},
-                status=status.HTTP_401_UNAUTHORIZED,
-            )
+        user_id = request.headers["user-id"]
+        orders = Order.objects.filter(order_user=user_id)
+        serializer = OrderSerializer(orders, many=True)
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
+        user_id = request.headers["user-id"]
         cart = Cart(request)
-        order = cart.create_order()
+        order = cart.create_order(request, user_id)
 
-        cart.clear()
-        return Response({"order_id": order.id}, status=status.HTTP_201_CREATED)
+        return Response({"order_id": order.order_id}, status=status.HTTP_201_CREATED)

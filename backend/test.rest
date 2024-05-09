@@ -1,7 +1,7 @@
-POST http://127.0.0.1:8000/api/users/login/
+POST http://127.0.0.1:8000/api/users/token/
 Content-Type: application/json
 
-{"username":"kogucik2003@o2.pl", "password":"andrej"}
+{"email":"neuromindinsights33@gmail.com", "password":"xatja9-Gonhap-vugteq"}
 
 ###
 
@@ -33,11 +33,11 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/api/products
 Content-Type: application/json
-
 ###
-
-GET http://127.0.0.1:8000/api/cart
+POST http://127.0.0.1:8000/api/cart/
 Content-Type: application/json
+
+{"clear":"clear"}
 
 ###
 
@@ -45,12 +45,15 @@ POST http://127.0.0.1:8000/api/cart/
 Content-Type: application/json
 
 {
-    "id": 4,
-  "quantity":5
-  }
+    "id": 4,"quantity":5}
 
-POST http://127.0.0.1:8000/cart/order
+###
+
+POST http://127.0.0.1:8000/api/cart/order/
 Content-Type: application/json
 
-{
-  }
+
+
+###
+GET http://127.0.0.1:8000/api/cart/
+Content-Type: application/json
