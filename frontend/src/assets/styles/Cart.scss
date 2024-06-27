@@ -64,6 +64,14 @@
     height: 3rem;
     cursor: pointer; // Add this line
   }
+  .btn-make-order {
+    border: black solid 0.5px;
+    background-color: colors.$themeSecondColor;
+    color: colors.$themeFirstColor;
+    width: 5rem;
+    height: 3rem;
+    cursor: pointer; // Add this line
+  }
 }
 .empty-cart-alert {
   text-align: center;

@@ -12,7 +12,7 @@ class Cart:
 
         self.session = request.session
         cart = self.session.get("cart")
-
+        print(self.session)
         if cart == None:
             cart = self.session["cart"] = {}
 
@@ -83,11 +83,12 @@ class Cart:
             order_status="created",
         )
 
-        for item in self.cart.values():
+        for item_id, values in zip(self.cart, self.cart.values()):
+
             Positsion.objects.create(
-                id=item["id"],
-                product=Product.objects.get(id=item["id"]),
-                quantity=item["product_quantity"],
+                id=item_id,
+                product=Product.objects.get(id=item_id),
+                quantity=values["product_quantity"],
                 order=order,
             )
         return order

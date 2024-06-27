@@ -31,7 +31,7 @@ GET http://127.0.0.1:8000/api/products?name__icontains=a&price_min=&price_max=
 Content-Type: application/json
 
 ###
-GET http://127.0.0.1:8000/api/products
+GET http://127.0.0.1:8000/api/cart
 Content-Type: application/json
 ###
 POST http://127.0.0.1:8000/api/cart/

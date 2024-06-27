@@ -18,7 +18,7 @@ type Filters = {
 const Products = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productsPerPage, setproductsPerPage] = useState(5);
+  const [productsPerPage, setproductsPerPage] = useState(9);
   const [data, setData] = useState<any[]>([]);
   const [filters, setFilters] = useState<Filters>({
     companies: [],

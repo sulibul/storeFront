@@ -34,7 +34,7 @@ const Cart = () => {
   });
 
   const waitOneSecond = () => {
-    return new Promise((resolve) => setTimeout(resolve, 250));
+    return new Promise((resolve) => setTimeout(resolve, 500));
   };
 
   const fetchCartData = async () => {
@@ -91,6 +91,7 @@ const Cart = () => {
         >
           Remove all products
         </Button>
+        <p>Value of products: {cartInfo.cart_total_price}$</p>
         <Button
           className="make-order"
           onClick={() => {
@@ -103,7 +104,6 @@ const Cart = () => {
         >
           Order
         </Button>
-        <p>Value of products: {cartInfo.cart_total_price}$</p>
       </div>
     </>
   );

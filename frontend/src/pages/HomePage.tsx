@@ -19,7 +19,9 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="advertisment"></div>
+      <div className="advertisment">
+        <a>andrej</a>
+      </div>
       <div className="margin"></div>
       <div className="best-products-container">
         {bestProducts.map((product) => (

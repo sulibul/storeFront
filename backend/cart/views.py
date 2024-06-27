@@ -15,6 +15,7 @@ class CartApiView(APIView):
 
     def get(self, request):
         cart = Cart(request)
+        print(list(cart.__iter__()))
         return Response(
             {
                 "data": list(cart.__iter__()),

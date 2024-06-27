@@ -22,10 +22,11 @@ const ProductContainer = ({ product }: ProductProps) => {
   return (
     <>
       <div className="product-card" id={`product${product.id}`}>
-        <img src={product.product_img}></img>
-        <h3 className="product-name">{product.name}</h3>
+        <img className="product-img" src={product.product_img}></img>
+        <h3 className="product-company">{product.company}</h3>
+        <p className="product-name">{product.name}</p>
         <Link to={`/product/${product.id}`} className="product-price">
-          {product.price}$
+          {product.price} $
         </Link>
       </div>
     </>

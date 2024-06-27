@@ -64,22 +64,26 @@ const FilterSideBar = ({
   return (
     <>
       <form>
-        <h3>Companies</h3>
-        {companies.map((company: string) => (
-          <CheckBox
-            name={company}
-            value={company}
-            handleChange={handleChangeCompany}
-          ></CheckBox>
-        ))}
-        <h3>Categories</h3>
-        {categories.map((category: string) => (
-          <CheckBox
-            name={category}
-            value={category}
-            handleChange={handleChangeCategory}
-          ></CheckBox>
-        ))}
+        <div className="companies-filters">
+          <h3>Companies</h3>
+          {companies.map((company: string) => (
+            <CheckBox
+              name={company}
+              value={company}
+              handleChange={handleChangeCompany}
+            ></CheckBox>
+          ))}
+        </div>
+        <div className="categories-filters">
+          <h3>Categories</h3>
+          {categories.map((category: string) => (
+            <CheckBox
+              name={category}
+              value={category}
+              handleChange={handleChangeCategory}
+            ></CheckBox>
+          ))}
+        </div>
       </form>
     </>
   );

@@ -201,7 +201,7 @@ CORS_ALLOW_HEADERS = (
     "access-control-allow-methods",
     "Access-Control-Allow-Methods",
     "content-type",
-    "access-control-allow-headers",
+    "access-control-allow-Headers",
     "X-CSRFToken",
     "user-id",
 )
@@ -221,15 +221,15 @@ CORS_ORIGIN_WHITELIST = (
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://127.0.0.1:3000"]
 AUTH_USER_MODEL = "users.CustomUser"
 
+
 CORS_ALLOW_CREDENTIALS = True
 
 CART_SESSION_ID = "cart"
-
-SESSION_COOKIE_SAMESITE = None
 
 SESSION_COOKIE_AGE = 1200
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_NAME = "sessionid"
-SESSION_COOKIE_SECURE = False
-SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True

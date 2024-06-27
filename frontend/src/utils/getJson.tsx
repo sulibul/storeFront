@@ -4,6 +4,9 @@ import getCookie from "./getCookie";
 import { jwtDecode } from "jwt-decode";
 
 axios.defaults.withCredentials = true;
+const client = axios.create({
+  baseURL: "http://127.0.0.1:3000",
+});
 
 let payload = null;
 type body = {
@@ -36,7 +39,7 @@ export const AJAX = async function (
       payload = null;
     }
     const fetchPro = uploadData
-      ? axios.post(url, JSON.stringify(body), {
+      ? client.post(url, JSON.stringify(body), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +48,7 @@ export const AJAX = async function (
             "user-id": payload?.id,
           },
         })
-      : axios.get(url, { headers: { "user-id": payload?.id } });
+      : client.get(url, { headers: { "user-id": payload?.id } });
 
     const res: any = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
 

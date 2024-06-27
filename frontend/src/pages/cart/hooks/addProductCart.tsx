@@ -6,6 +6,7 @@ const addProductCart = async (
   quantity: number,
   override_quantity: boolean = false
 ) => {
+  console.log("addProductCart", id, quantity, override_quantity);
   const result = await AJAX(`${API_URL}/cart/`, true, {
     "id": id,
     "quantity": quantity,
