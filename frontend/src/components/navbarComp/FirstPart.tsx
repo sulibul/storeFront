@@ -20,9 +20,33 @@ const FirstPart = () => {
           <Button onClick={() => {}} className="products">
             <Link to="/products">Products</Link>
           </Button>
-          <Button onClick={() => {}} className="categories">
-            <a>Categories</a>
-          </Button>
+          <div className="categories-dropdown">
+            <Button onClick={() => {}} className="categories">
+              <a className="categories">Categories</a>
+            </Button>
+            <div className="categories-dropdown-content">
+              <p>
+                <Link onClick={() => (window.location.href = "/products/1")}>
+                  Laptops
+                </Link>
+              </p>
+              <p>
+                <Link onClick={() => (window.location.href = "/products/2")}>
+                  Smartphones
+                </Link>
+              </p>
+              <p>
+                <Link onClick={() => (window.location.href = "/products/5")}>
+                  Monitors
+                </Link>
+              </p>
+              <p>
+                <Link onClick={() => (window.location.href = "/products/3")}>
+                  Accessories
+                </Link>
+              </p>
+            </div>
+          </div>
           {user ? (
             <Button onClick={logoutUser} className="logout">
               logout

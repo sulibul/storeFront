@@ -30,34 +30,22 @@ const Footer = () => {
           <h3>Categories</h3>
           <ul className="footer-categories">
             <li>
-              <Link
-                to="/products/1"
-                onClick={() => (window.location.href = "/products/1")}
-              >
+              <Link onClick={() => (window.location.href = "/products/1")}>
                 Laptops
               </Link>
             </li>
             <li>
-              <Link
-                to="/products/3"
-                onClick={() => (window.location.href = "/products/3")}
-              >
+              <Link onClick={() => (window.location.href = "/products/2")}>
                 Smartphones
               </Link>
             </li>
             <li>
-              <Link
-                to="/products/2"
-                onClick={() => (window.location.href = "/products/2")}
-              >
+              <Link onClick={() => (window.location.href = "/products/5")}>
                 Monitors
               </Link>
             </li>
             <li>
-              <Link
-                to="/products/4"
-                onClick={() => (window.location.href = "/products/4")}
-              >
+              <Link onClick={() => (window.location.href = "/products/3")}>
                 Accessories
               </Link>
             </li>

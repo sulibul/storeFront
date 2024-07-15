@@ -1,11 +1,22 @@
 @use "utilities/colorVariables" as colors;
+@use "utilities/fonts" as fonts;
 
 .advertisment {
   display: flex;
+  flex-direction: column;
   background-color: colors.$themeFirstColor;
-  height: 300px;
+  background-color: #d0cccc;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
+.advertisment > * {
+  font-family: fonts.$inter-bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
 .margin {
   display: flex;
   background-color: colors.$themeSecondColor;
@@ -16,4 +27,19 @@
   display: grid;
   background-color: colors.$themeFirstColor;
   grid-template-columns: 25% 25% 25% 25%;
+}
+@media only screen and (max-width: 600px) {
+  .best-products-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+.ad-title {
+  font-size: 3em;
+  font-weight: bold;
+}
+.ad-subtitle {
+  font-size: 1em;
+  font-weight: bold;
 }

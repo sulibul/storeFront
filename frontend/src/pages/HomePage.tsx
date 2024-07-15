@@ -10,7 +10,7 @@ const HomePage = () => {
   const fetchProductData = async () => {
     const result = await AJAX(`${API_URL}/products
     `);
-    setBestProducts(result.slice(0, 10));
+    setBestProducts(result.slice(0, 8));
   };
 
   useEffect(() => {
@@ -20,7 +20,8 @@ const HomePage = () => {
   return (
     <>
       <div className="advertisment">
-        <a>andrej</a>
+        <h2 className="ad-title">BEST SHOP</h2>
+        <h4 className="ad-subtitle">BEST PRICES</h4>
       </div>
       <div className="margin"></div>
       <div className="best-products-container">

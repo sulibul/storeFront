@@ -9,6 +9,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=storeApi
 
+    ports:
+      - "5435:5432"
+
     volumes:
       - ./data/db:/var/lib/postgresql/data/
 

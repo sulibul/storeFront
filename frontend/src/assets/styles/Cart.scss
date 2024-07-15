@@ -10,6 +10,18 @@
   padding-bottom: 1rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .cart-product-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .cart-product {
+    .right-elements {
+      width: 80%;
+    }
+  }
+}
+
 .cart-product {
   font-family: fonts.$poppins-light;
   padding-left: 0.5rem;

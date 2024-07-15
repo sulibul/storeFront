@@ -151,13 +151,14 @@ const Products = () => {
                     <ProductContainer product={product}></ProductContainer>
                   );
                 })}
-          <Pagination
-            length={filteredData.length > 0 ? filteredData.length : data.length}
-            productsPerPage={productsPerPage}
-            handlePagination={handlePagination}
-            currentPage={currentPage}
-          ></Pagination>
         </div>
+        <div></div>
+        <Pagination
+          length={filteredData.length > 0 ? filteredData.length : data.length}
+          productsPerPage={productsPerPage}
+          handlePagination={handlePagination}
+          currentPage={currentPage}
+        ></Pagination>
       </div>
     </>
   );

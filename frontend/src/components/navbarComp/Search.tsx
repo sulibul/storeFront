@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const Search = () => {
@@ -12,7 +12,8 @@ const Search = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Navigate to the search results page with the search query
-    navigate(`/search/${encodeURIComponent(search)}`);
+    navigate(`/search/${encodeURIComponent(search)}`, { replace: true });
+    navigate(0);
   };
 
   return (

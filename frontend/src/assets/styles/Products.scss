@@ -5,6 +5,19 @@
   background-color: colors.$themeFirstColor;
   display: grid;
   grid-template-columns: 20% 80%;
+  div.pagination {
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    grid-column: span 1;
+    button {
+      cursor: pointer;
+      border: 0px;
+      border-right: 0.5px solid;
+      border-left: 0.5px solid;
+      background-color: white;
+    }
+  }
 }
 
 .sidebar-container {
@@ -17,15 +30,15 @@
     margin-top: 1rem;
     margin-bottom: 5%;
     font-family: fonts.$poppins-light;
-    font-size: 15pt;
+    font-size: 1.2em;
     margin-left: 5%;
   }
   input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 1rem;
+    height: 0.9rem;
     border: 0.5px solid #000;
     border-radius: 4px;
     position: relative;
@@ -101,11 +114,30 @@
     height: 30px;
     border-bottom: 0.5px solid;
   }
-  div.pagination {
-    display: flex;
-    grid-column: span 3;
-    justify-content: center;
-  }
+
   display: grid;
   grid-template-columns: 33% 33% 33%;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-container {
+    display: grid;
+    grid-template-columns: 100%;
+
+    .sort-control {
+      grid-column: span 1;
+      height: 30px;
+      border-bottom: 0.5px solid;
+    }
+  }
+  div.pagination {
+    border-top: auto;
+    display: flex;
+    grid-column: span 1;
+    justify-content: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
 }

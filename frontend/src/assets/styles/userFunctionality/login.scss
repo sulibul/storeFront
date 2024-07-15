@@ -2,7 +2,7 @@
 @use "../utilities/fonts" as fonts;
 
 .login-container {
-  width: 25%;
+  width: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +49,6 @@
 
 .submit-button {
   margin-top: 20px;
-  width: 50%;
 }
 
 .login-page {
